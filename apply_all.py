@@ -36,6 +36,8 @@ def main():
     ap.add_argument("--retranslate", action="store_true",
                     help="额外用 translation/done 的语料回填整个中文语言文件（会先备份为 .bak）")
     ap.add_argument("--skip-assets", action="store_true", help="只修语言包，不动 resources.assets")
+    ap.add_argument("--patch-dll", action="store_true",
+                    help="额外修补 Assembly-CSharp.dll：修「改了分辨率重启后失效」（显式可选，会备份）")
     a = ap.parse_args()
 
     lang, assets, managed = paths(a.game)
@@ -86,6 +88,16 @@ def main():
     fix_font_fallback.TMP_DRY = os.path.join(os.path.dirname(assets), "_fontfix_dryrun.assets")
     print("\n字体修复:", assets)
     ok = (fix_font_fallback.main(apply=a.apply) == 0) and ok
+
+    # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
+    if a.patch_dll:
+        import subprocess
+        dll = os.path.join(a.game, "ThirdCrisis_Data", "Managed", "Assembly-CSharp.dll")
+        print("\n分辨率持久化修复:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_resolution_persist.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
 
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
