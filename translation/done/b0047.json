@@ -1,0 +1,962 @@
+[
+ {
+  "t": "Shit! Have we been made?",
+  "x": "糟了！我们暴露了？"
+ },
+ {
+  "t": "This one train with you?",
+  "x": "这个跟你一起训练？"
+ },
+ {
+  "t": "O-Oh err... Of c-course.",
+  "x": "哦-哦 呃……当-当然。"
+ },
+ {
+  "t": "Okay, you can open them!",
+  "x": "好了，可以睁眼了！"
+ },
+ {
+  "t": "Potion? What does it do?",
+  "x": "药水？有什么用？"
+ },
+ {
+  "t": "Right, of course. Sorry.",
+  "x": "对，当然。抱歉。"
+ },
+ {
+  "t": "Thank you so much, guys.",
+  "x": "太感谢了，各位。"
+ },
+ {
+  "t": "Puuumpkin... spiiicee...",
+  "x": "南——瓜……香——料……"
+ },
+ {
+  "t": "Hoooh... I'm so closeee~",
+  "x": "呼哦……我快到了~"
+ },
+ {
+  "t": "Pretend you are a guard.",
+  "x": "假装你是守卫。"
+ },
+ {
+  "t": "Wait! What do you mean?!",
+  "x": "等等！什么意思？！"
+ },
+ {
+  "t": "For... For helping me...",
+  "x": "为了……为了帮我……"
+ },
+ {
+  "t": "Ass cheeks. Spread. Now.",
+  "x": "屁股。张开。现在。"
+ },
+ {
+  "t": "Sleep well, little hero.",
+  "x": "睡个好觉，小英雄。"
+ },
+ {
+  "t": "You know why I'm here...",
+  "x": "你知道我为什么来……"
+ },
+ {
+  "t": "Can... Can you touch me?",
+  "x": "你……你能碰我吗？"
+ },
+ {
+  "t": "Big? Well I'm flattered.",
+  "x": "大？那我还真受宠若惊。"
+ },
+ {
+  "t": "Well? Did you forget it?",
+  "x": "怎样？你忘了？"
+ },
+ {
+  "t": "I'm just curious. Sorry.",
+  "x": "我只是好奇。抱歉。"
+ },
+ {
+  "t": "So what's the big issue?",
+  "x": "那到底有什么大问题？"
+ },
+ {
+  "t": "Force him to let her go.",
+  "x": "逼他放了她。"
+ },
+ {
+  "t": "What was that all about?",
+  "x": "刚才那是怎么回事？"
+ },
+ {
+  "t": "Jen...? Are you alright?",
+  "x": "珍……？你没事吧？"
+ },
+ {
+  "t": "Yeah... He's a good kid.",
+  "x": "嗯……他是个好孩子。"
+ },
+ {
+  "t": "Are you the big brother?",
+  "x": "你是当哥的吗？"
+ },
+ {
+  "t": "Hmm! That's a tough one!",
+  "x": "嗯！这题难！"
+ },
+ {
+  "t": "Was he torn up about it?",
+  "x": "他为此难过吗？"
+ },
+ {
+  "t": "Whatever you say, Throb.",
+  "x": "你说了算，悸动。"
+ },
+ {
+  "t": "You’re just saying that.",
+  "x": "你只是嘴上说说。"
+ },
+ {
+  "t": "Uh huh… but I trust you!",
+  "x": "嗯哼……但我信你！"
+ },
+ {
+  "t": "It’ll be fine! Trust me!",
+  "x": "没事的！信我！"
+ },
+ {
+  "t": "LET’S DO THIS! LET’S GO!",
+  "x": "来吧！走起！"
+ },
+ {
+  "t": "Phew! That should be it!",
+  "x": "呼！应该就是这样！"
+ },
+ {
+  "t": "Oh don’t be a soursport!",
+  "x": "哦别扫兴嘛！"
+ },
+ {
+  "t": "Alright... I'll be back.",
+  "x": "好……我会回来的。"
+ },
+ {
+  "t": "It's just a stupid name.",
+  "x": "只是个傻名字而已。"
+ },
+ {
+  "t": "Phew! No problem at all!",
+  "x": "呼！完全没问题！"
+ },
+ {
+  "t": "Mmm~ You could say that~",
+  "x": "嗯~可以这么说~"
+ },
+ {
+  "t": "I... I can't... Sorry...",
+  "x": "我……我不能……抱歉……"
+ },
+ {
+  "t": "Of course we wanna help!",
+  "x": "我们当然想帮忙！"
+ },
+ {
+  "t": "Drugging me up~ Heheh...",
+  "x": "给我下药~嘿嘿……"
+ },
+ {
+  "t": "Is she going to be okay?",
+  "x": "她会没事吗？"
+ },
+ {
+  "t": "Fuck, she's hot, hahaha.",
+  "x": "操，她真性感，哈哈。"
+ },
+ {
+  "t": "Claim your reward again.",
+  "x": "再次领取奖励。"
+ },
+ {
+  "t": "Destroy the Plant Cores.",
+  "x": "摧毁植物核心。"
+ },
+ {
+  "t": "Speak to the Ninja Girl.",
+  "x": "跟忍者少女谈谈。"
+ },
+ {
+  "t": "Sneak to the storehouse.",
+  "x": "潜入仓库。"
+ },
+ {
+  "t": "Find the Peitho outpost.",
+  "x": "找到佩托前哨站。"
+ },
+ {
+  "t": "Find all the Easter eggs",
+  "x": "找到所有复活节彩蛋"
+ },
+ {
+  "t": "Talk to the Easter Bunny",
+  "x": "跟复活节兔谈谈"
+ },
+ {
+  "t": "Talk to Jewel in the bar",
+  "x": "在酒吧跟茱尔谈"
+ },
+ {
+  "t": "Complete Throb's request",
+  "x": "完成悸动的请求"
+ },
+ {
+  "t": "Go to the GAG storehouse",
+  "x": "前往GAG仓库"
+ },
+ {
+  "t": "Plant a bug in the motel",
+  "x": "在汽车旅馆装窃听器"
+ },
+ {
+  "t": "Return to the real world",
+  "x": "回到现实世界"
+ },
+ {
+  "t": "Big Raid Catface Bandana",
+  "x": "大突袭猫脸头巾"
+ },
+ {
+  "t": "Choker with small Spikes",
+  "x": "小尖刺颈圈"
+ },
+ {
+  "t": "Peitho Bodysuit Left Arm",
+  "x": "佩托紧身衣左臂"
+ },
+ {
+  "t": "Peitho Slave Fishnet Top",
+  "x": "佩托奴隶渔网上衣"
+ },
+ {
+  "t": "0.39.0-pr - (2019.4.12f1)",
+  "x": "0.39.0-pr - (2019.4.12f1)"
+ },
+ {
+  "t": "OS: OS Version [Platform]",
+  "x": "系统：系统版本 [平台]"
+ },
+ {
+  "t": "Project Peitho : Entry 43",
+  "x": "佩托计划：第43篇"
+ },
+ {
+  "t": "Occupation:\nSlave Trainer",
+  "x": "职业：\n奴隶调教师"
+ },
+ {
+  "t": "Press any key to bind it.",
+  "x": "按任意键进行绑定。"
+ },
+ {
+  "t": "0.40.0-pr - (2019.4.12f1)",
+  "x": "0.40.0-pr - (2019.4.12f1)"
+ },
+ {
+  "t": "Cock wants!! Cock needs!!",
+  "x": "肉棒想要！！肉棒需要！！"
+ },
+ {
+  "t": "<i>(Ouch! Ouch ouch!)</i>",
+  "x": "<i>(痛！痛痛！)</i>"
+ },
+ {
+  "t": "See.. It's good for you..",
+  "x": "看……这对你好……"
+ },
+ {
+  "t": "Time to get my pay then..",
+  "x": "那该拿我的报酬了……"
+ },
+ {
+  "t": "Ahh, fuck, there we go..!",
+  "x": "啊，操，就是这样……！"
+ },
+ {
+  "t": "Hehehe, she's all gone..~",
+  "x": "嘿嘿嘿，她全没了……~"
+ },
+ {
+  "t": "Hey.. Do you have some..?",
+  "x": "嘿……你有一些吗……？"
+ },
+ {
+  "t": "Mmh.. Just what I needed.",
+  "x": "嗯……正是我需要的。"
+ },
+ {
+  "t": "Push him aside and leave.",
+  "x": "把他推开然后走。"
+ },
+ {
+  "t": "Nice tits and a nice ass?",
+  "x": "好奶子又配好屁股？"
+ },
+ {
+  "t": "Feisty. What a lucky man.",
+  "x": "够泼辣。那男人真走运。"
+ },
+ {
+  "t": "Shit! She's a badge girl!",
+  "x": "糟了！她是徽章女！"
+ },
+ {
+  "t": "Belong to someone…? What?",
+  "x": "属于某人……？什么？"
+ },
+ {
+  "t": "Yeah… You two better run!",
+  "x": "嗯……你们俩最好快跑！"
+ },
+ {
+  "t": "The year? It’s 2053. Why?",
+  "x": "年份？现在是2053。怎么？"
+ },
+ {
+  "t": "Ask about the explosives.",
+  "x": "问问炸药的事。"
+ },
+ {
+  "t": "I won't disappoint, boss!",
+  "x": "我不会让您失望，老板！"
+ },
+ {
+  "t": "This will do just fine..~",
+  "x": "这个就够了……~"
+ },
+ {
+  "t": "You on the other hand...~",
+  "x": "而你嘛……~"
+ },
+ {
+  "t": "<i>Some time later...</i>",
+  "x": "<i>一段时间后……</i>"
+ },
+ {
+  "t": "It's almost sad, ehehe..~",
+  "x": "简直有点可悲，诶嘿嘿……~"
+ },
+ {
+  "t": "That's not what happened!",
+  "x": "事情不是那样！"
+ },
+ {
+  "t": "Mmmm, gimme all that cum~",
+  "x": "嗯嗯，把精液全给我~"
+ },
+ {
+  "t": "Catch ya later then, hun.",
+  "x": "那回见，亲爱的。"
+ },
+ {
+  "t": "Whatcha wanna know, babe?",
+  "x": "你想知道什么，宝贝？"
+ },
+ {
+  "t": "<i>... and cumming...</i>",
+  "x": "<i>……然后射了……</i>"
+ },
+ {
+  "t": "<i>* But nobody came.</i>",
+  "x": "<i>* 但没有人来。</i>"
+ },
+ {
+  "t": "... I-.. I gotta go now..",
+  "x": "……我-……我得走了……"
+ },
+ {
+  "t": "Perfect timing, hehehe...",
+  "x": "时机完美，嘿嘿嘿……"
+ },
+ {
+  "t": "Get on your knees, whore.",
+  "x": "跪下，婊子。"
+ },
+ {
+  "t": "<i>(P-Peitho..?! Wh-)</i>",
+  "x": "<i>(佩-佩托……？！什-)</i>"
+ },
+ {
+  "t": "It's-.. it's really you?!",
+  "x": "是-……真的是你？！"
+ },
+ {
+  "t": "Fuck, your pussy is wet..",
+  "x": "操，你的小穴好湿……"
+ },
+ {
+  "t": "Still feeling good, hmm?~",
+  "x": "还很舒服，嗯？~"
+ },
+ {
+  "t": "Good.. Well done, slut...",
+  "x": "好……干得好，骚货……"
+ },
+ {
+  "t": "Let's go, girl! Speed up!",
+  "x": "走吧，姑娘！加速！"
+ },
+ {
+  "t": "<i>The two men leave.</i>",
+  "x": "<i>两个男人离开了。</i>"
+ },
+ {
+  "t": "Name's Evelyn by the way.",
+  "x": "对了，我叫伊芙琳。"
+ },
+ {
+  "t": "It is! Here's your share!",
+  "x": "是！这是你的分成！"
+ },
+ {
+  "t": "Heh, he seems to like it.",
+  "x": "呵，他好像挺喜欢。"
+ },
+ {
+  "t": "Of course.. Look at her..",
+  "x": "当然……看看她……"
+ },
+ {
+  "t": "The sales agree with you.",
+  "x": "销售额站在你这边。"
+ },
+ {
+  "t": "Wanna come sit on my lap?",
+  "x": "想过来坐我腿上吗？"
+ },
+ {
+  "t": "Yess... Just like that...",
+  "x": "是是……就是这样……"
+ },
+ {
+  "t": "Fuck, that was hot, slut.",
+  "x": "操，真性感，骚货。"
+ },
+ {
+  "t": "I can see that. Let's go.",
+  "x": "看得出来。走吧。"
+ },
+ {
+  "t": "Let's go. Back to patrol.",
+  "x": "走吧。回去巡逻。"
+ },
+ {
+  "t": "Yeah! You all better run!",
+  "x": "好！你们最好都快跑！"
+ },
+ {
+  "t": "What, you want some more?",
+  "x": "怎么，你还想要？"
+ },
+ {
+  "t": "Ask for help with ambush.",
+  "x": "请求伏击支援。"
+ },
+ {
+  "t": "Hehe, that's right, slut.",
+  "x": "嘿嘿，没错，骚货。"
+ },
+ {
+  "t": "Nice, hehehe. That's hot.",
+  "x": "不错，嘿嘿嘿。真性感。"
+ },
+ {
+  "t": "Stop stuttering, fucktoy.",
+  "x": "别结巴了，操弄玩具。"
+ },
+ {
+  "t": "There you go, <b>cow</b>!",
+  "x": "就是这样，<b>奶牛</b>！"
+ },
+ {
+  "t": "Make me enjoy myself, 83.",
+  "x": "让我享受，83。"
+ },
+ {
+  "t": "Both of you, get out now.",
+  "x": "你们两个，现在滚出去。"
+ },
+ {
+  "t": "That will work, hehehe...",
+  "x": "那管用，嘿嘿嘿……"
+ },
+ {
+  "t": "Here's your pay. Get out.",
+  "x": "这是你的报酬。滚吧。"
+ },
+ {
+  "t": "Please don't report me...",
+  "x": "求你别举报我……"
+ },
+ {
+  "t": "Everything is in place..~",
+  "x": "一切就绪……~"
+ },
+ {
+  "t": "Time for your customer..~",
+  "x": "你的客人到了……~"
+ },
+ {
+  "t": "Ask him why he works out.",
+  "x": "问他为什么健身。"
+ },
+ {
+  "t": "Ask him about the others.",
+  "x": "问他其他人的事。"
+ },
+ {
+  "t": "Ask about the resistance.",
+  "x": "问问抵抗军的事。"
+ },
+ {
+  "t": "Y-Yes! Ve-Very important!",
+  "x": "是-是！非非非常重要！"
+ },
+ {
+  "t": "I guess that's alright...",
+  "x": "大概还行……"
+ },
+ {
+  "t": "I guess that makes sense!",
+  "x": "说得通！"
+ },
+ {
+  "t": "Hi food girl. You pretty.",
+  "x": "你好食物女孩。你漂亮。"
+ },
+ {
+  "t": "I-I... Yeah! Thank you...",
+  "x": "我-我……对！谢谢你……"
+ },
+ {
+  "t": "I don't talk to recruits.",
+  "x": "我不跟新兵说话。"
+ },
+ {
+  "t": "<i>I spit on her face</i>",
+  "x": "<i>我朝她脸上吐口水</i>"
+ },
+ {
+  "t": "Now, if you'll excuse me~",
+  "x": "好了，失陪了~"
+ },
+ {
+  "t": "Oh, I'm counting on that~",
+  "x": "哦，我就指望这个~"
+ },
+ {
+  "t": "Nnnngh...haaah...rrrrgh…!",
+  "x": "嗯……哈……呃……！"
+ },
+ {
+  "t": "Is it time for-.. More..?",
+  "x": "是时候-……再来……？"
+ },
+ {
+  "t": "Who would say no to that?",
+  "x": "谁会拒绝那个？"
+ },
+ {
+  "t": "Nhh...! Is it-... Hot...?",
+  "x": "嗯……！它是-……烫的……？"
+ },
+ {
+  "t": "Aaah, fuck that's good...",
+  "x": "啊啊，操 真舒服……"
+ },
+ {
+  "t": "Guuuuhhh... Ffuuuuckkk...",
+  "x": "咕……操……"
+ },
+ {
+  "t": "Project Chronos : Entry 1",
+  "x": "克洛诺斯计划：第1篇"
+ },
+ {
+  "t": "Project Chronos : Entry 2",
+  "x": "克洛诺斯计划：第2篇"
+ },
+ {
+  "t": "Project Chronos : Entry 3",
+  "x": "克洛诺斯计划：第3篇"
+ },
+ {
+  "t": "Project Chronos : Entry 4",
+  "x": "克洛诺斯计划：第4篇"
+ },
+ {
+  "t": "<i>(What is that..?!)</i>",
+  "x": "<i>(那是什么……？！)</i>"
+ },
+ {
+  "t": "Just let me in, will ya?!",
+  "x": "让我进去行不行！？"
+ },
+ {
+  "t": "rida's cock enters jenna.",
+  "x": "丽达的肉棒进入珍娜。"
+ },
+ {
+  "t": "rida begins to fuck jenna",
+  "x": "丽达开始操珍娜"
+ },
+ {
+  "t": "begin spanking loop again",
+  "x": "再次开始打屁股循环"
+ },
+ {
+  "t": "Huh?! Me? What did I do?!",
+  "x": "嗯？！我？我做什么了？！"
+ },
+ {
+  "t": "*throb whips jenna again*",
+  "x": "*悸动又抽了珍娜*"
+ },
+ {
+  "t": "Sorry! Was that too hard?",
+  "x": "抱歉！太重了吗？"
+ },
+ {
+  "t": "No need, I've got my own.",
+  "x": "不用，我有自己的。"
+ },
+ {
+  "t": "Mmm~ Fuck, that's so hot.",
+  "x": "嗯~操，太性感了。"
+ },
+ {
+  "t": "Mmm... Carcen Rida's now.",
+  "x": "嗯……卡森现在是丽达的了。"
+ },
+ {
+  "t": "You want rubs, sexy babe?",
+  "x": "想要揉揉吗，性感宝贝？"
+ },
+ {
+  "t": "Mmhm~ Let's take it home.",
+  "x": "嗯哼~带回家吧。"
+ },
+ {
+  "t": "I like the sound of that~",
+  "x": "这主意听着不错~"
+ },
+ {
+  "t": "Got it! Think I'm ready!\r",
+  "x": "收到！我觉得准备好了！\r"
+ },
+ {
+  "t": "Can I get an extra kiss?\r",
+  "x": "能多给一个吻吗？\r"
+ },
+ {
+  "t": "Feast your eyes on this!\r",
+  "x": "大饱眼福吧！\r"
+ },
+ {
+  "t": "<i>(Maybe I could...)</i>",
+  "x": "<i>(也许我可以……)</i>"
+ },
+ {
+  "t": "I like the sound of that.",
+  "x": "这主意听着不错。"
+ },
+ {
+  "t": "Already getting wet, hmm?",
+  "x": "已经湿了，嗯？"
+ },
+ {
+  "t": "Hehe, there ya go, buddy!",
+  "x": "嘿嘿，就是这样，伙计！"
+ },
+ {
+  "t": "... <size=27>Nice.</size>",
+  "x": "……<size=27>不错。</size>"
+ },
+ {
+  "t": "Y-Yep... Thanks, I think?",
+  "x": "是-是……谢了，我觉得？"
+ },
+ {
+  "t": "What a nice show, hehehe.",
+  "x": "好一场表演，嘿嘿嘿。"
+ },
+ {
+  "t": "You're fucked up, hahaha.",
+  "x": "你有毛病，哈哈。"
+ },
+ {
+  "t": "So, whats the next order?",
+  "x": "那么，下一单是什么？"
+ },
+ {
+  "t": "Lets find out then, hehe.",
+  "x": "那就试试看，嘿嘿。"
+ },
+ {
+  "t": "Look at how wet she is...",
+  "x": "看看她多湿……"
+ },
+ {
+  "t": "<i>He leaves the bar.</i>",
+  "x": "<i>他离开了酒吧。</i>"
+ },
+ {
+  "t": "S-so much cum... Fuck-...",
+  "x": "好-好多精液……操-……"
+ },
+ {
+  "t": "<i>I leave the table.</i>",
+  "x": "<i>我离开桌子。</i>"
+ },
+ {
+  "t": "But you can do better...!",
+  "x": "但你能做得更好……！"
+ },
+ {
+  "t": "<i>5 minutes later...</i>",
+  "x": "<i>5分钟后……</i>"
+ },
+ {
+  "t": "Ass..?! I-.. I've never..",
+  "x": "屁股……？！我-……我从来没有……"
+ },
+ {
+  "t": "J-jenna..! I-.. Fuck..!!!",
+  "x": "珍-珍娜……！我-……操……！！！"
+ },
+ {
+  "t": "Time for some more fun...",
+  "x": "该再来点乐子了……"
+ },
+ {
+  "t": "Why stop with her pussy..",
+  "x": "为什么只停在她的小穴……"
+ },
+ {
+  "t": "Who wants her pussy next?",
+  "x": "下一个想要她小穴的是谁？"
+ },
+ {
+  "t": "Ghuhhh-..! I-.. Ffuck-..!",
+  "x": "咕-……！我-……操-……！"
+ },
+ {
+  "t": "Here it comes, open wide!",
+  "x": "要来了，张大嘴！"
+ },
+ {
+  "t": "Fff... Blue... I'm gonna~",
+  "x": "呋……小蓝……我要~"
+ },
+ {
+  "t": "Hehe~ Did you like that~?",
+  "x": "嘿嘿~喜欢吗~？"
+ },
+ {
+  "t": "Are we ready to head out?",
+  "x": "我们准备好出发了吗？"
+ },
+ {
+  "t": "Scooch over! I can't see!",
+  "x": "挪一挪！我看不见！"
+ },
+ {
+  "t": "I guess that makes sense.",
+  "x": "大概说得通。"
+ },
+ {
+  "t": "overworld, jenna with par",
+  "x": "大地图，珍娜随队"
+ },
+ {
+  "t": "Rida go too! Rida go too!",
+  "x": "丽达也去！丽达也去！"
+ },
+ {
+  "t": "That's the dance we love!",
+  "x": "这就是我们爱的舞蹈！"
+ },
+ {
+  "t": "Mouth please, Miss Jenna!",
+  "x": "请用嘴，珍娜小姐！"
+ },
+ {
+  "t": "How does that girl do it?",
+  "x": "那姑娘怎么做到的？"
+ },
+ {
+  "t": "Practice tomorrow again?!",
+  "x": "明天还要练习？！"
+ },
+ {
+  "t": "See you guys around then!",
+  "x": "那回头见！"
+ },
+ {
+  "t": "What?! Did you lie to me?",
+  "x": "什么？！你骗我？"
+ },
+ {
+  "t": "Shit...this isn't good...",
+  "x": "糟了……这不妙……"
+ },
+ {
+  "t": "That is your new mission.",
+  "x": "那就是你的新任务。"
+ },
+ {
+  "t": "Haaaaaah...! Fuuuuuck...!",
+  "x": "哈啊……！操……！"
+ },
+ {
+  "t": "Oh, I'm gonna enjoy this.",
+  "x": "哦，我会好好享受的。"
+ },
+ {
+  "t": "We can do it, right guys?",
+  "x": "我们能做到，对吧各位？"
+ },
+ {
+  "t": "We're <i>not</i> enemies!",
+  "x": "我们<i>不是</i>敌人！"
+ },
+ {
+  "t": "Whatcha waiting for, bud?",
+  "x": "还在等什么，伙计？"
+ },
+ {
+  "t": "So let's go check it out.",
+  "x": "那我们去看看。"
+ },
+ {
+  "t": "They're killing the land.",
+  "x": "他们在毁掉这片土地。"
+ },
+ {
+  "t": "Sounds like a plan to me.",
+  "x": "我觉得是好主意。"
+ },
+ {
+  "t": "Oh... that makes sense...",
+  "x": "哦……说得通……"
+ },
+ {
+  "t": "You said we were friends?",
+  "x": "你说过我们是朋友？"
+ },
+ {
+  "t": "<i>Nothing happens...</i>",
+  "x": "<i>什么都没发生……</i>"
+ },
+ {
+  "t": "Mina... They take Rida...",
+  "x": "米娜……他们带走丽达……"
+ },
+ {
+  "t": "I'm gonna go investigate.",
+  "x": "我去调查一下。"
+ },
+ {
+  "t": "Rida want help... Argh...",
+  "x": "丽达想帮忙……呃……"
+ },
+ {
+  "t": "JENNA! GET AWAY FROM HER!",
+  "x": "珍娜！离她远点！"
+ },
+ {
+  "t": "Mm... HQ wish Jenna luck.",
+  "x": "嗯……总部祝珍娜好运。"
+ },
+ {
+  "t": "It came a little close...",
+  "x": "刚才有点危险……"
+ },
+ {
+  "t": "Do you wanna change that?",
+  "x": "你想改变这一点吗？"
+ },
+ {
+  "t": "You must be sooo pent up~",
+  "x": "你肯定憋——坏了~"
+ },
+ {
+  "t": "Fhoooh god, I'm gonnnaaa~",
+  "x": "呼哦天，我要~"
+ },
+ {
+  "t": "Rida like Carcen's pussy~",
+  "x": "丽达喜欢卡森的小穴~"
+ },
+ {
+  "t": "... O-Oh... Is she? A-Ah!",
+  "x": "……哦-哦……是吗？啊-啊！"
+ },
+ {
+  "t": "... Do I even wanna know?",
+  "x": "……我真的想知道吗？"
+ },
+ {
+  "t": "Gob done, Rida! Gob done!",
+  "x": "嘴巴完了，丽达！嘴巴完了！"
+ },
+ {
+  "t": "I... It's not... Shut up!",
+  "x": "我……不是……闭嘴！"
+ },
+ {
+  "t": "Demon. Enough. We go now.",
+  "x": "恶魔。够了。我们走。"
+ },
+ {
+  "t": "How you vibrosuit, Jenna?",
+  "x": "振动服如何，珍娜？"
+ },
+ {
+  "t": "Rida muscle demon around.",
+  "x": "丽达扛着恶魔到处走。"
+ },
+ {
+  "t": "There's that voice again!",
+  "x": "那个声音又来了！"
+ },
+ {
+  "t": "You can't leave? Why not?",
+  "x": "你不能离开？为什么？"
+ },
+ {
+  "t": "She's still got her puns.",
+  "x": "她还在讲双关。"
+ },
+ {
+  "t": "You're no friend of mine!",
+  "x": "你不是我的朋友！"
+ },
+ {
+  "t": "Alright... Is Karen fine?",
+  "x": "好……凯伦没事吧？"
+ },
+ {
+  "t": "Uh huuh? I'm in suspense.",
+  "x": "嗯哼？我等着呢。"
+ },
+ {
+  "t": "Jen? Are you in position?",
+  "x": "珍？你就位了吗？"
+ },
+ {
+  "t": "I pulled my arm back out.",
+  "x": "我把胳膊抽回来了。"
+ },
+ {
+  "t": "<size=30>Wha? I...</size>",
+  "x": "<size=30>什？我……</size>"
+ }
+]

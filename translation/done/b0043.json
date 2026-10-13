@@ -1,0 +1,482 @@
+[
+ {
+  "t": "How are the mannequins?",
+  "x": "人体模型怎么样？"
+ },
+ {
+  "t": "We were just passing by",
+  "x": "我们只是路过"
+ },
+ {
+  "t": "<i>(Go extinct...?)</i>",
+  "x": "<i>(灭绝……？)</i>"
+ },
+ {
+  "t": "Anything else you need?",
+  "x": "还需要别的吗？"
+ },
+ {
+  "t": "Accept Sophie's Request",
+  "x": "接受苏菲的请求"
+ },
+ {
+  "t": "Come to annoy me again?",
+  "x": "又来烦我？"
+ },
+ {
+  "t": "Off to the dealer then.",
+  "x": "那就去找毒贩。"
+ },
+ {
+  "t": "Back at resistance base",
+  "x": "回到抵抗军基地"
+ },
+ {
+  "t": "Then it's a done deal! ",
+  "x": "那就成交！ "
+ },
+ {
+  "t": "Declinen Sophie's Offer",
+  "x": "拒绝苏菲的提议"
+ },
+ {
+  "t": "Fine, fine, I promise. ",
+  "x": "好好好，我保证。 "
+ },
+ {
+  "t": "Yeaaaaaaaaaaaaaaaaaaah!",
+  "x": "耶——！"
+ },
+ {
+  "t": "See you around, Arnold!",
+  "x": "回见，阿诺德！"
+ },
+ {
+  "t": "Jenna, do you know him?",
+  "x": "珍娜，你认识他？"
+ },
+ {
+  "t": "Encore! Encore! Encore!",
+  "x": "再来一个！再来一个！"
+ },
+ {
+  "t": "I'm just worried about-",
+  "x": "我只是担心-"
+ },
+ {
+  "t": "knocking sound effects ",
+  "x": "敲门音效 "
+ },
+ {
+  "t": "Can we really do it...?",
+  "x": "我们真能做到……？"
+ },
+ {
+  "t": "Haaaaaaah....haaaah....",
+  "x": "哈啊……哈……"
+ },
+ {
+  "t": "Seems like its working!",
+  "x": "看来有效果！"
+ },
+ {
+  "t": "Riiiiiiight. Sure, Jen.",
+  "x": "是——是。当然，珍。"
+ },
+ {
+  "t": "button press, beep boop",
+  "x": "按键声，哔啵"
+ },
+ {
+  "t": "Jenna is one lucky gal.",
+  "x": "珍娜真是个幸运的姑娘。"
+ },
+ {
+  "t": "That sound fair to you?",
+  "x": "你觉得公平吗？"
+ },
+ {
+  "t": "Hehe! That's just fine~",
+  "x": "嘿嘿！那正好~"
+ },
+ {
+  "t": "We still have a chance.",
+  "x": "我们还有机会。"
+ },
+ {
+  "t": "Lady? What do you mean?",
+  "x": "女士？什么意思？"
+ },
+ {
+  "t": "It's not a trap, right?",
+  "x": "不是陷阱，对吧？"
+ },
+ {
+  "t": "I like this girl, blue.",
+  "x": "我喜欢这姑娘，小蓝。"
+ },
+ {
+  "t": "I didn't turn off shit!",
+  "x": "我什么都没关！"
+ },
+ {
+  "t": "Grrr! I'm not a rascal!",
+  "x": "呜！我不是小混蛋！"
+ },
+ {
+  "t": "Grr... Plant monster...",
+  "x": "呜……植物怪物……"
+ },
+ {
+  "t": "HQ didn't touch lights!",
+  "x": "总部没碰灯！"
+ },
+ {
+  "t": "Yes, I know, but I mea-",
+  "x": "是，我知道，但我是说-"
+ },
+ {
+  "t": "Rida ready. Rida tired.",
+  "x": "丽达准备好。丽达累。"
+ },
+ {
+  "t": "Pick weapon, you fight.",
+  "x": "挑武器，你去打。"
+ },
+ {
+  "t": "Which should I pick...?",
+  "x": "我该挑哪个……？"
+ },
+ {
+  "t": "Ah! Rida like that one!",
+  "x": "啊！丽达喜欢那个！"
+ },
+ {
+  "t": "Dayum~ Look at blue go~",
+  "x": "我的天~看小蓝多猛~"
+ },
+ {
+  "t": "Aah~ Me like sexy girl!",
+  "x": "啊~丽达喜欢性感女孩！"
+ },
+ {
+  "t": "Mm~! This loser better.",
+  "x": "嗯~！这个输家更棒。"
+ },
+ {
+  "t": "Henry? Is that you, HQ?",
+  "x": "亨利？是你吗，总部？"
+ },
+ {
+  "t": "Put... hm... Put... on!",
+  "x": "穿……嗯……穿……上！"
+ },
+ {
+  "t": "Let him see everything.",
+  "x": "让他看个够。"
+ },
+ {
+  "t": "Run along, errand girl.",
+  "x": "去吧，跑腿丫头。"
+ },
+ {
+  "t": "Mm. All according plan.",
+  "x": "嗯。一切按计划。"
+ },
+ {
+  "t": "HQ have more for Jenna.",
+  "x": "总部还有更多给珍娜。"
+ },
+ {
+  "t": "More? I love surprises.",
+  "x": "更多？我爱惊喜。"
+ },
+ {
+  "t": "Ah! Rida like fire big!",
+  "x": "啊！丽达喜欢大火！"
+ },
+ {
+  "t": "Let's just keep moving.",
+  "x": "我们继续赶路吧。"
+ },
+ {
+  "t": "I... Yeah I knew her...",
+  "x": "我……对，我认识她……"
+ },
+ {
+  "t": "I learnt from the best.",
+  "x": "我跟最厉害的人学的。"
+ },
+ {
+  "t": "Phew! Good stuff, guys!",
+  "x": "呼！干得漂亮，各位！"
+ },
+ {
+  "t": "Just open up, will ya!?",
+  "x": "开门行不行！？"
+ },
+ {
+  "t": "Never did like veggies.",
+  "x": "从来不喜欢菜头。"
+ },
+ {
+  "t": "A-Agh! You haven't won!",
+  "x": "啊-啊！你还没赢！"
+ },
+ {
+  "t": "Lemme get that for you~",
+  "x": "我来帮你拿~"
+ },
+ {
+  "t": "Do your evil monologue?",
+  "x": "来段反派独白？"
+ },
+ {
+  "t": "Blow the damn thing up.",
+  "x": "把那该死的东西炸了。"
+ },
+ {
+  "t": "W-! Uhh... I mean uh...",
+  "x": "什-！呃……我是说 那个……"
+ },
+ {
+  "t": "Hehe... You're on, Flo.",
+  "x": "嘿嘿……你先来，芙洛。"
+ },
+ {
+  "t": "Hello Carcens. Welcome.",
+  "x": "你好卡森。欢迎。"
+ },
+ {
+  "t": "Back to getting fucked?",
+  "x": "回去挨操？"
+ },
+ {
+  "t": "Damn. Oh well, I tried.",
+  "x": "该死。算了，我试过了。"
+ },
+ {
+  "t": "That's not what I- Shh!",
+  "x": "那不是我的意——嘘！"
+ },
+ {
+  "t": "I can take care of her~",
+  "x": "我可以照顾她~"
+ },
+ {
+  "t": "Careful! No let escape!",
+  "x": "小心！别让她逃了！"
+ },
+ {
+  "t": "Phew... Yeah, I... Mhm!",
+  "x": "呼……对，我……嗯！"
+ },
+ {
+  "t": "... For the resistance!",
+  "x": "……为了抵抗军！"
+ },
+ {
+  "t": "It's Jewel! She's back!",
+  "x": "是茱尔！她回来了！"
+ },
+ {
+  "t": "Anyone getting deja vu?",
+  "x": "有人觉得似曾相识吗？"
+ },
+ {
+  "t": "So do you like singing?",
+  "x": "那你喜欢唱歌吗？"
+ },
+ {
+  "t": "I'll take care of this.",
+  "x": "这个交给我。"
+ },
+ {
+  "t": "Hah! You and what army?",
+  "x": "哈！你和你的什么大军？"
+ },
+ {
+  "t": "That sounds nice, blue.",
+  "x": "听起来不错，小蓝。"
+ },
+ {
+  "t": "Oh! Eheh, no thank you.",
+  "x": "哦！诶嘿，不用了。"
+ },
+ {
+  "t": "I think it's kinda hot.",
+  "x": "我觉得还挺性感。"
+ },
+ {
+  "t": "Thanks! Fits perfectly!",
+  "x": "谢了！非常合身！"
+ },
+ {
+  "t": "That's just how she is.",
+  "x": "她就是那样的人。"
+ },
+ {
+  "t": "I <b>am</b> being nice!",
+  "x": "我<b>就</b>在客气！"
+ },
+ {
+  "t": "Rida still love Mina...",
+  "x": "丽达仍爱米娜……"
+ },
+ {
+  "t": "Where can we find them?",
+  "x": "我们去哪找他们？"
+ },
+ {
+  "t": "It's Vibe! We're saved!",
+  "x": "是波动！我们有救了！"
+ },
+ {
+  "t": "Daamn! Blue's a genius!",
+  "x": "天哪！小蓝是天才！"
+ },
+ {
+  "t": "Hint for middle keypad.",
+  "x": "中间键盘的提示。"
+ },
+ {
+  "t": "Nice! They're all here!",
+  "x": "好！都在这了！"
+ },
+ {
+  "t": "Phew... Oh my... god...",
+  "x": "呼……我……的天……"
+ },
+ {
+  "t": "What do you want, slut?",
+  "x": "你想要什么，骚货？"
+ },
+ {
+  "t": "Thanks... Thanks, blue.",
+  "x": "谢了……谢了，小蓝。"
+ },
+ {
+  "t": "Grrr Rats never forget.",
+  "x": "呜 鼠帮从不忘记。"
+ },
+ {
+  "t": "Is that what you think?",
+  "x": "你是这么想的？"
+ },
+ {
+  "t": "Sway your hips for him.",
+  "x": "为他扭动胯部。"
+ },
+ {
+  "t": "Ask him what he thinks.",
+  "x": "问他怎么想。"
+ },
+ {
+  "t": "W-Wait! How about this?",
+  "x": "等-等等！这个如何？"
+ },
+ {
+  "t": "E-Ehm... Can I ask why?",
+  "x": "那-那个……我能问为什么吗？"
+ },
+ {
+  "t": "... Something is wrong.",
+  "x": "……有地方不对。"
+ },
+ {
+  "t": "The fur of a Black Cat!",
+  "x": "黑猫的毛！"
+ },
+ {
+  "t": "The bone of a Skeleton!",
+  "x": "骷髅的骨头！"
+ },
+ {
+  "t": "Wakey wakey, lil kitty.",
+  "x": "醒醒，小猫咪。"
+ },
+ {
+  "t": "I-It's a little sudden!",
+  "x": "这-这有点突然！"
+ },
+ {
+  "t": "I don't have that much!",
+  "x": "我没有那么多！"
+ },
+ {
+  "t": "Not quite. Turn around.",
+  "x": "还没好。转过去。"
+ },
+ {
+  "t": "Hush. No more speaking.",
+  "x": "嘘。不许再说话。"
+ },
+ {
+  "t": "Good girl. Moan for me.",
+  "x": "乖女孩。为我呻吟。"
+ },
+ {
+  "t": "... The lust ray stuff?",
+  "x": "……那个欲望射线？"
+ },
+ {
+  "t": "Your skin is so soft...",
+  "x": "你的皮肤好软……"
+ },
+ {
+  "t": "Good. That's very good.",
+  "x": "好。非常好。"
+ },
+ {
+  "t": "Very good girl... Mm...",
+  "x": "非常乖的女孩……嗯……"
+ },
+ {
+  "t": "G-Get it off-... Ugh...",
+  "x": "把-把它弄开-……呃……"
+ },
+ {
+  "t": "Yeah, what's your name?",
+  "x": "对，你叫什么？"
+ },
+ {
+  "t": "Yup, not even sure why.",
+  "x": "对，连为什么都不知道。"
+ },
+ {
+  "t": "Just... Go home, ma'am.",
+  "x": "还是……回家吧，女士。"
+ },
+ {
+  "t": "We'll see. Bring it on!",
+  "x": "走着瞧。放马过来！"
+ },
+ {
+  "t": "Really? Just like that?",
+  "x": "真的？就这样？"
+ },
+ {
+  "t": "Holy crap! You’re Vibe?",
+  "x": "我的天！你是波动？"
+ },
+ {
+  "t": "I think they’re coming!",
+  "x": "我觉得他们来了！"
+ },
+ {
+  "t": "AND DON'T CALL ME THAT!",
+  "x": "还有别那么叫我！"
+ },
+ {
+  "t": "Eheh! Don't mention it!",
+  "x": "诶嘿！别客气！"
+ },
+ {
+  "t": "I... I saw her, blue...",
+  "x": "我……我看到她了，小蓝……"
+ },
+ {
+  "t": "It isn't what, darling?",
+  "x": "不是什么，亲爱的？"
+ }
+]

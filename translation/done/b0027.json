@@ -1,0 +1,482 @@
+[
+ {
+  "t": "Yeah... Will do.",
+  "x": "嗯……遵命。"
+ },
+ {
+  "t": "I can handle it.",
+  "x": "我能应付。"
+ },
+ {
+  "t": "W-... Then what?",
+  "x": "什-……然后呢？"
+ },
+ {
+  "t": "So you'll do it?",
+  "x": "那你会做？"
+ },
+ {
+  "t": "Yeah, of course.",
+  "x": "对，当然。"
+ },
+ {
+  "t": "Jenna? Can talk?",
+  "x": "珍娜？能说话？"
+ },
+ {
+  "t": "Caught? By whom?",
+  "x": "被抓？被谁？"
+ },
+ {
+  "t": "The Lumber Rats?",
+  "x": "伐木鼠帮？"
+ },
+ {
+  "t": "Yay! Fight time!",
+  "x": "耶！开打时间！"
+ },
+ {
+  "t": "You okay, Jenna?",
+  "x": "你没事吧，珍娜？"
+ },
+ {
+  "t": "Rida no give up.",
+  "x": "丽达不放弃。"
+ },
+ {
+  "t": "That's not it...",
+  "x": "不是那样……"
+ },
+ {
+  "t": "Thanks Martin...",
+  "x": "谢了马丁……"
+ },
+ {
+  "t": "Try again, blue!",
+  "x": "再试试，小蓝！"
+ },
+ {
+  "t": "Thanks! I think.",
+  "x": "谢了！我觉得。"
+ },
+ {
+  "t": "He's an asshole.",
+  "x": "他是个混蛋。"
+ },
+ {
+  "t": "Err... Hey blue?",
+  "x": "呃……嘿，小蓝？"
+ },
+ {
+  "t": "Who did you see?",
+  "x": "你看到了谁？"
+ },
+ {
+  "t": "I saw my mother.",
+  "x": "我看到了我母亲。"
+ },
+ {
+  "t": "Let's get naked.",
+  "x": "来脱光吧。"
+ },
+ {
+  "t": "Hey blue! Catch!",
+  "x": "嘿，小蓝！接住！"
+ },
+ {
+  "t": "<i>(Got it!)</i>",
+  "x": "<i>(接到了！)</i>"
+ },
+ {
+  "t": "<b>Oh wow</b>...",
+  "x": "<b>哦哇</b>……"
+ },
+ {
+  "t": "Yeah... gross...",
+  "x": "嗯……恶心……"
+ },
+ {
+  "t": "Listen here you-",
+  "x": "你给我听着-"
+ },
+ {
+  "t": "You okay, Jewel?",
+  "x": "你没事吧，茱尔？"
+ },
+ {
+  "t": "Look! Doll okay!",
+  "x": "看！娃娃没事！"
+ },
+ {
+  "t": "Smart Hen smart.",
+  "x": "母鸡聪明真聪明。"
+ },
+ {
+  "t": "Now I require...",
+  "x": "现在我要求……"
+ },
+ {
+  "t": "Transformation?!",
+  "x": "变身？！"
+ },
+ {
+  "t": "Great! I'm glad!",
+  "x": "太好了！我很高兴！"
+ },
+ {
+  "t": "Let Jewel do it.",
+  "x": "让茱尔来做。"
+ },
+ {
+  "t": "It's not stolen!",
+  "x": "它不是偷的！"
+ },
+ {
+  "t": "Is this fine...?",
+  "x": "这样可以吗……？"
+ },
+ {
+  "t": "Cum for me. Now.",
+  "x": "为我射。现在。"
+ },
+ {
+  "t": "Bounce for me...",
+  "x": "为我摇摆……"
+ },
+ {
+  "t": "Just let her go!",
+  "x": "放了她！"
+ },
+ {
+  "t": "Yeah... Yeah, I-",
+  "x": "嗯……嗯，我-"
+ },
+ {
+  "t": "Woooo! See that?",
+  "x": "喔哦！看到了？"
+ },
+ {
+  "t": "Haaah... Shit...",
+  "x": "哈……糟糕……"
+ },
+ {
+  "t": "Well... Alright.",
+  "x": "那……好吧。"
+ },
+ {
+  "t": "Hey, no problem!",
+  "x": "嘿，没问题！"
+ },
+ {
+  "t": "Yeah. It's fine.",
+  "x": "嗯。没事。"
+ },
+ {
+  "t": "Hey! Badge girl!",
+  "x": "喂！徽章女！"
+ },
+ {
+  "t": "I SAID SHUT UP!!",
+  "x": "我说了闭嘴！！"
+ },
+ {
+  "t": "W- Karen? What?!",
+  "x": "什——凯伦？什么？！"
+ },
+ {
+  "t": "Jewel? You okay?",
+  "x": "茱尔？你没事？"
+ },
+ {
+  "t": "I... I think so!",
+  "x": "我……我想是！"
+ },
+ {
+  "t": "Dynamic Lighting",
+  "x": "动态光照"
+ },
+ {
+  "t": "Enable Skip Mode",
+  "x": "启用跳过模式"
+ },
+ {
+  "t": "Physical Defense",
+  "x": "物理防御"
+ },
+ {
+  "t": "Talk to the man.",
+  "x": "跟那个男人谈。"
+ },
+ {
+  "t": "The new waitress",
+  "x": "新来的女侍"
+ },
+ {
+  "t": "Lab Rat - Dealer",
+  "x": "实验鼠 - 毒贩"
+ },
+ {
+  "t": "Accept the offer",
+  "x": "接受提议"
+ },
+ {
+  "t": "Meet Pyra again.",
+  "x": "再会派拉。"
+ },
+ {
+  "t": "Find your jacket",
+  "x": "找回你的夹克"
+ },
+ {
+  "t": "Leave the forest",
+  "x": "离开森林"
+ },
+ {
+  "t": "Go to the tower.",
+  "x": "前往高塔。"
+ },
+ {
+  "t": "Eat Your Veggies",
+  "x": "吃你的蔬菜"
+ },
+ {
+  "t": "Repair Wildfire.",
+  "x": "修理野火。"
+ },
+ {
+  "t": "A Touching Story",
+  "x": "感人的故事"
+ },
+ {
+  "t": "Return to Jewel.",
+  "x": "回到茱尔身边。"
+ },
+ {
+  "t": "Let Jewel shine.",
+  "x": "让茱尔闪耀。"
+ },
+ {
+  "t": "Speak with Rida.",
+  "x": "和丽达聊聊。"
+ },
+ {
+  "t": "Escape the room.",
+  "x": "逃出房间。"
+ },
+ {
+  "t": "Escape the base.",
+  "x": "逃出基地。"
+ },
+ {
+  "t": "Leave the mines.",
+  "x": "离开矿坑。"
+ },
+ {
+  "t": "Peitho Grenadier",
+  "x": "佩托掷弹兵"
+ },
+ {
+  "t": "Mustache Bandana",
+  "x": "胡子头巾"
+ },
+ {
+  "t": "Collar with Bell",
+  "x": "带铃铛项圈"
+ },
+ {
+  "t": "Eyebrow Piercing",
+  "x": "眉部穿孔"
+ },
+ {
+  "t": "Fiend Earrings 1",
+  "x": "恶魔耳环1"
+ },
+ {
+  "t": "Fiend Earrings 2",
+  "x": "恶魔耳环2"
+ },
+ {
+  "t": "Fiend Earrings 3",
+  "x": "恶魔耳环3"
+ },
+ {
+  "t": "Choker with Ring",
+  "x": "带环颈圈"
+ },
+ {
+  "t": "Anti-Drunk Drink",
+  "x": "解醉酒"
+ },
+ {
+  "t": "Grumpy Man's Key",
+  "x": "臭脾气男人的钥匙"
+ },
+ {
+  "t": "Big Freaking Gun",
+  "x": "超猛大枪"
+ },
+ {
+  "t": "Tentacle Flogger",
+  "x": "触手皮鞭"
+ },
+ {
+  "t": "Forest Outskirts",
+  "x": "森林边缘"
+ },
+ {
+  "t": "Stronghold Ruins",
+  "x": "要塞废墟"
+ },
+ {
+  "t": "(Attack) Bukkake",
+  "x": "（攻击）颜射"
+ },
+ {
+  "t": "Mission Name Here",
+  "x": "任务名在此"
+ },
+ {
+  "t": "Unlock info here.",
+  "x": "解锁信息在此。"
+ },
+ {
+  "t": "The Witching Hour",
+  "x": "魔女时刻"
+ },
+ {
+  "t": "Working on 0.3.0!",
+  "x": "正在开发0.3.0！"
+ },
+ {
+  "t": "Message goes here",
+  "x": "消息显示在此"
+ },
+ {
+  "t": "Private Lessons: ",
+  "x": "私教课： "
+ },
+ {
+  "t": "They want More...",
+  "x": "他们想要更多……"
+ },
+ {
+  "t": "Play / Stop Music",
+  "x": "播放/停止音乐"
+ },
+ {
+  "t": "Cumming to heal~!",
+  "x": "用射的来治疗~！"
+ },
+ {
+  "t": "Perfect, ehehe..~",
+  "x": "完美，诶嘿嘿……~"
+ },
+ {
+  "t": "<i>Hours later...",
+  "x": "<i>数小时后……"
+ },
+ {
+  "t": "<i>(Guh..!!!)</i>",
+  "x": "<i>(咕……！！！)</i>"
+ },
+ {
+  "t": "Pretty ominous...",
+  "x": "相当不祥……"
+ },
+ {
+  "t": "Urghh... Fuck...!",
+  "x": "呃……操……！"
+ },
+ {
+  "t": "Pun not intended.",
+  "x": "双关无意。"
+ },
+ {
+  "t": "Not yet at least.",
+  "x": "至少现在还没有。"
+ },
+ {
+  "t": "Fine, I'll do it.",
+  "x": "行，我来做。"
+ },
+ {
+  "t": "Ouch! Ouch! Ouch!",
+  "x": "痛！痛！痛！"
+ },
+ {
+  "t": "Yes, bossss-..!!~",
+  "x": "是，老板——-……！！~"
+ },
+ {
+  "t": "Fuck me boss-..!!",
+  "x": "操我 老板-……！！"
+ },
+ {
+  "t": "Interesting look.",
+  "x": "有意思的表情。"
+ },
+ {
+  "t": "Huh. Nice timing.",
+  "x": "嗯。时机正好。"
+ },
+ {
+  "t": "Thank you, Amber.",
+  "x": "谢谢你，安珀。"
+ },
+ {
+  "t": "Dance with Jewel.",
+  "x": "和茱尔跳舞。"
+ },
+ {
+  "t": "New waitress, hm?",
+  "x": "新来的女侍，嗯？"
+ },
+ {
+  "t": "Nasty slut, haha!",
+  "x": "淫荡的骚货，哈哈！"
+ },
+ {
+  "t": "Sure thing, slut.",
+  "x": "没问题，骚货。"
+ },
+ {
+  "t": "What do you want?",
+  "x": "你想要什么？"
+ },
+ {
+  "t": "<i>(Guhh..!!)</i>",
+  "x": "<i>(咕……！！)</i>"
+ },
+ {
+  "t": "<i>(Guh...!!)</i>",
+  "x": "<i>(咕……！！)</i>"
+ },
+ {
+  "t": "Looking for this?",
+  "x": "在找这个？"
+ },
+ {
+  "t": "<i>(Porn...?)</i>",
+  "x": "<i>(色情……？)</i>"
+ },
+ {
+  "t": "<i>(Guhh-..!)</i>",
+  "x": "<i>(咕-……！)</i>"
+ },
+ {
+  "t": "Data extracted...",
+  "x": "数据已提取……"
+ },
+ {
+  "t": "You look so hot..",
+  "x": "你看起来好性感……"
+ },
+ {
+  "t": "Just like that..~",
+  "x": "就这样……~"
+ },
+ {
+  "t": "<b>Hey Girls!</b>",
+  "x": "<b>嘿，姑娘们！</b>"
+ }
+]

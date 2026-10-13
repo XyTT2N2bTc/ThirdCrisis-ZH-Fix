@@ -1,0 +1,482 @@
+[
+ {
+  "t": "Put clothes!",
+  "x": "把衣服穿上！"
+ },
+ {
+  "t": "That's good~",
+  "x": "这就对了~"
+ },
+ {
+  "t": "I... Thanks.",
+  "x": "我……谢谢。"
+ },
+ {
+  "t": "Heya, Jewel!",
+  "x": "嘿，茱尔！"
+ },
+ {
+  "t": "That enough.",
+  "x": "够了。"
+ },
+ {
+  "t": "Poor blue...",
+  "x": "可怜的小蓝……"
+ },
+ {
+  "t": "Uhh... nope.",
+  "x": "呃……才不。"
+ },
+ {
+  "t": "That's good.",
+  "x": "这就对了。"
+ },
+ {
+  "t": "... do that.",
+  "x": "……那么做。"
+ },
+ {
+  "t": "Demon. Move.",
+  "x": "恶魔。让开。"
+ },
+ {
+  "t": "We'll see...",
+  "x": "走着瞧……"
+ },
+ {
+  "t": "My pleasure~",
+  "x": "我的荣幸~"
+ },
+ {
+  "t": "T-They lied!",
+  "x": "他-他们撒谎！"
+ },
+ {
+  "t": "... What...?",
+  "x": "……什么……？"
+ },
+ {
+  "t": "N-No... I...",
+  "x": "不-不……我……"
+ },
+ {
+  "t": "Jenna! Move!",
+  "x": "珍娜！快躲！"
+ },
+ {
+  "t": "... Or that.",
+  "x": "……或者那样。"
+ },
+ {
+  "t": "Quiet, Mina.",
+  "x": "安静，米娜。"
+ },
+ {
+  "t": "Don't watch.",
+  "x": "别看。"
+ },
+ {
+  "t": "Thanks, hun.",
+  "x": "谢了，亲爱的。"
+ },
+ {
+  "t": "Heh... Yeah.",
+  "x": "呵……是啊。"
+ },
+ {
+  "t": "Yeah, Jewel!",
+  "x": "好，茱尔！"
+ },
+ {
+  "t": "Oh ffuuck...",
+  "x": "哦操……"
+ },
+ {
+  "t": "Your... wha?",
+  "x": "你的……什么？"
+ },
+ {
+  "t": "Hello Jenna…",
+  "x": "你好，珍娜……"
+ },
+ {
+  "t": "T-Thank you!",
+  "x": "谢-谢谢你！"
+ },
+ {
+  "t": "Mm. Finally.",
+  "x": "嗯。终于。"
+ },
+ {
+  "t": "Lucky guess.",
+  "x": "瞎猜的。"
+ },
+ {
+  "t": "Heh. Thanks!",
+  "x": "呵。谢了！"
+ },
+ {
+  "t": "Begone thot.",
+  "x": "退散吧骚货。"
+ },
+ {
+  "t": "A-Ah! Jewel!",
+  "x": "啊-啊！茱尔！"
+ },
+ {
+  "t": "Snake? What?",
+  "x": "蛇？什么？"
+ },
+ {
+  "t": "... Ooookay.",
+  "x": "……好—好吧。"
+ },
+ {
+  "t": "Forgive her.",
+  "x": "原谅她。"
+ },
+ {
+  "t": "Sorry, blue.",
+  "x": "抱歉，小蓝。"
+ },
+ {
+  "t": "Deadly sure.",
+  "x": "非常确定。"
+ },
+ {
+  "t": "Wow. Thanks!",
+  "x": "哇。谢了！"
+ },
+ {
+  "t": "No, I'm not.",
+  "x": "不，我不是。"
+ },
+ {
+  "t": "Ah! What th-",
+  "x": "啊！搞什-"
+ },
+ {
+  "t": "Inch closer.",
+  "x": "再靠近一点。"
+ },
+ {
+  "t": "Yeah, it is.",
+  "x": "是啊，是。"
+ },
+ {
+  "t": "Another one.",
+  "x": "再来一个。"
+ },
+ {
+  "t": "Stop it. Go.",
+  "x": "住手。走。"
+ },
+ {
+  "t": "R-Riiight...",
+  "x": "是-是——是……"
+ },
+ {
+  "t": "It's okay...",
+  "x": "没关系……"
+ },
+ {
+  "t": "H-Hoh fuuck~",
+  "x": "呼-呼哦 操~"
+ },
+ {
+  "t": "Ooooh god...",
+  "x": "哦哦天……"
+ },
+ {
+  "t": "Wonderful...",
+  "x": "太美妙……"
+ },
+ {
+  "t": "Uhhh... Hey!",
+  "x": "呃……嘿！"
+ },
+ {
+  "t": "Like... Now?",
+  "x": "就……现在？"
+ },
+ {
+  "t": "I'm waiting.",
+  "x": "我等着呢。"
+ },
+ {
+  "t": "Spread what?",
+  "x": "张开什么？"
+ },
+ {
+  "t": "Turn around?",
+  "x": "转过去？"
+ },
+ {
+  "t": "I-I... No...",
+  "x": "我-我……不……"
+ },
+ {
+  "t": "No... s-sir.",
+  "x": "不……长-长官。"
+ },
+ {
+  "t": "P... Please?",
+  "x": "求……求你？"
+ },
+ {
+  "t": "Please what?",
+  "x": "求什么？"
+ },
+ {
+  "t": "I... I am...",
+  "x": "我……我是……"
+ },
+ {
+  "t": "H-Haah... I-",
+  "x": "哈-哈……我-"
+ },
+ {
+  "t": "Mhm... Sure.",
+  "x": "嗯哼……当然。"
+ },
+ {
+  "t": "Scaredy cat!",
+  "x": "胆小鬼！"
+ },
+ {
+  "t": "Thank you...",
+  "x": "谢谢你……"
+ },
+ {
+  "t": "Sounds good.",
+  "x": "听起来不错。"
+ },
+ {
+  "t": "Hello there!",
+  "x": "你好！"
+ },
+ {
+  "t": "I... I will.",
+  "x": "我……我会的。"
+ },
+ {
+  "t": "It's a date.",
+  "x": "一言为定。"
+ },
+ {
+  "t": "Oh, shut up.",
+  "x": "哦，闭嘴。"
+ },
+ {
+  "t": "Good! But...",
+  "x": "好！但是……"
+ },
+ {
+  "t": "asdasdasdasd",
+  "x": "asdasdasdasd"
+ },
+ {
+  "t": "asdfasdfasdf",
+  "x": "asdfasdfasdf"
+ },
+ {
+  "t": "Grass Detail",
+  "x": "草地细节"
+ },
+ {
+  "t": "Enable VSync",
+  "x": "启用垂直同步"
+ },
+ {
+  "t": "Lust Defense",
+  "x": "欲望防御"
+ },
+ {
+  "t": "I can't use ",
+  "x": "我不能使用 "
+ },
+ {
+  "t": "Find the Bar",
+  "x": "找到酒吧"
+ },
+ {
+  "t": "Reporting In",
+  "x": "前来报到"
+ },
+ {
+  "t": "Townhall Job",
+  "x": "市政厅工作"
+ },
+ {
+  "t": "New Strength",
+  "x": "新的力量"
+ },
+ {
+  "t": "Go to Sleep.",
+  "x": "去睡觉。"
+ },
+ {
+  "t": "Rescue Karen",
+  "x": "营救凯伦"
+ },
+ {
+  "t": "Return to HQ",
+  "x": "返回总部"
+ },
+ {
+  "t": "Find Floria.",
+  "x": "找到芙洛拉。"
+ },
+ {
+  "t": "New Horizons",
+  "x": "新的地平线"
+ },
+ {
+  "t": "The Rat Trap",
+  "x": "捕鼠陷阱"
+ },
+ {
+  "t": "Peitho Grunt",
+  "x": "佩托杂兵"
+ },
+ {
+  "t": "Cup of Water",
+  "x": "一杯水"
+ },
+ {
+  "t": "Lip Piercing",
+  "x": "唇环"
+ },
+ {
+  "t": "Klaus' Badge",
+  "x": "克劳斯的徽章"
+ },
+ {
+  "t": "Dancer Dress",
+  "x": "舞娘裙"
+ },
+ {
+  "t": "Dancer Thong",
+  "x": "舞娘丁字裤"
+ },
+ {
+  "t": "Fishnet Suit",
+  "x": "渔网装"
+ },
+ {
+  "t": "Gothic Dress",
+  "x": "哥特裙"
+ },
+ {
+  "t": "Guard Helmet",
+  "x": "守卫头盔"
+ },
+ {
+  "t": "Slayer Armor",
+  "x": "猎杀者护甲"
+ },
+ {
+  "t": "Latex Outfit",
+  "x": "乳胶装"
+ },
+ {
+  "t": "Maid Panties",
+  "x": "女仆内裤"
+ },
+ {
+  "t": "Micro Bikini",
+  "x": "微型比基尼"
+ },
+ {
+  "t": "Peitho Boots",
+  "x": "佩托长靴"
+ },
+ {
+  "t": "Peitho Skirt",
+  "x": "佩托短裙"
+ },
+ {
+  "t": "Waitress Top",
+  "x": "女侍上衣"
+ },
+ {
+  "t": "Jewel's Rags",
+  "x": "茱尔的破衣"
+ },
+ {
+  "t": "Male Clothes",
+  "x": "男性衣物"
+ },
+ {
+  "t": "Health Tonic",
+  "x": "生命补剂"
+ },
+ {
+  "t": "Motel Report",
+  "x": "汽车旅馆报告"
+ },
+ {
+  "t": "Baseball Bat",
+  "x": "棒球棍"
+ },
+ {
+  "t": "Pulse Pistol",
+  "x": "脉冲手枪"
+ },
+ {
+  "t": "Ruined House",
+  "x": "废宅"
+ },
+ {
+  "t": "SubLevel One",
+  "x": "地下层一"
+ },
+ {
+  "t": "SubLevel Two",
+  "x": "地下层二"
+ },
+ {
+  "t": "Carcen Mines",
+  "x": "卡森矿坑"
+ },
+ {
+  "t": "Dealer's Den",
+  "x": "毒贩巢穴"
+ },
+ {
+  "t": "Flame Charge",
+  "x": "烈焰冲锋"
+ },
+ {
+  "t": "Tendril Hook",
+  "x": "触手钩"
+ },
+ {
+  "t": "MultiGrenade",
+  "x": "多重手雷"
+ },
+ {
+  "t": "Oral Healing",
+  "x": "口治疗"
+ },
+ {
+  "t": "Thorn Jungle",
+  "x": "荆棘丛林"
+ },
+ {
+  "t": "Quick-Footed",
+  "x": "脚步轻快"
+ },
+ {
+  "t": "Leave Gallery",
+  "x": "离开画廊"
+ },
+ {
+  "t": "Enter text...",
+  "x": "输入文字……"
+ },
+ {
+  "t": "CharacterName",
+  "x": "角色名"
+ }
+]

@@ -1,0 +1,482 @@
+[
+ {
+  "t": "Can I... uh...",
+  "x": "我能……那个……"
+ },
+ {
+  "t": "Suck his cock.",
+  "x": "吸他的肉棒。"
+ },
+ {
+  "t": "L-Lady Pyra...",
+  "x": "派-派拉大人……"
+ },
+ {
+  "t": "Of course not!",
+  "x": "当然不会！"
+ },
+ {
+  "t": "Seems like it!",
+  "x": "看起来是！"
+ },
+ {
+  "t": "Just a little.",
+  "x": "就一点点。"
+ },
+ {
+  "t": "Thanks, Jewel.",
+  "x": "谢了，茱尔。"
+ },
+ {
+  "t": "... Good girl~",
+  "x": "……乖女孩~"
+ },
+ {
+  "t": "Uhh... Boo...?",
+  "x": "呃……鬼……？"
+ },
+ {
+  "t": "Yeah, she did!",
+  "x": "对，她做了！"
+ },
+ {
+  "t": "Fuck off, bud!",
+  "x": "滚开，伙计！"
+ },
+ {
+  "t": "Now bend over.",
+  "x": "现在弯下腰。"
+ },
+ {
+  "t": "... Yes sir...",
+  "x": "……是，长官……"
+ },
+ {
+  "t": "H-Hah! Ffff...",
+  "x": "哈-哈！呋……"
+ },
+ {
+  "t": "Say 'No, sir.'",
+  "x": "说“不，长官。”"
+ },
+ {
+  "t": "I... I wasn't?",
+  "x": "我……我没有？"
+ },
+ {
+  "t": "Yo-You know...",
+  "x": "你-你知道……"
+ },
+ {
+  "t": "The... Hunger?",
+  "x": "那个……饥饿？"
+ },
+ {
+  "t": "Hey! You came!",
+  "x": "嘿！你来了！"
+ },
+ {
+  "t": "Not quite yet!",
+  "x": "还差一点！"
+ },
+ {
+  "t": "Whatever, bud.",
+  "x": "随便，伙计。"
+ },
+ {
+  "t": "I... Thanks...",
+  "x": "我……谢谢……"
+ },
+ {
+  "t": "Likewise, Jen.",
+  "x": "彼此彼此，珍。"
+ },
+ {
+  "t": "She means you.",
+  "x": "她说的是你。"
+ },
+ {
+  "t": "Yeah! Exactly!",
+  "x": "对！正是！"
+ },
+ {
+  "t": "Oh... G-God...",
+  "x": "哦……老-老天……"
+ },
+ {
+  "t": "U-Uh... Yeah?!",
+  "x": "呃-呃……对？！"
+ },
+ {
+  "t": "Not quite yet.",
+  "x": "还差一点。"
+ },
+ {
+  "t": "Eheh…! Thanks!",
+  "x": "诶嘿……！谢了！"
+ },
+ {
+  "t": "Yes, yes I am.",
+  "x": "是，我是。"
+ },
+ {
+  "t": "Well… Alright…",
+  "x": "这个……好吧……"
+ },
+ {
+  "t": "And... KABOOM!",
+  "x": "然后……轰！"
+ },
+ {
+  "t": "Agh! No! Wait!",
+  "x": "啊！不！等等！"
+ },
+ {
+  "t": "Grav Knuckles?",
+  "x": "重力指虎？"
+ },
+ {
+  "t": "T... Toast...?",
+  "x": "吐……吐司……？"
+ },
+ {
+  "t": "To your owner?",
+  "x": "敬你的主人？"
+ },
+ {
+  "t": "Maybe I can...",
+  "x": "也许我可以……"
+ },
+ {
+  "t": "Hey! whats up?",
+  "x": "嘿！怎么了？"
+ },
+ {
+  "t": "Effects Volume",
+  "x": "效果音量"
+ },
+ {
+  "t": "Lewder Shooter",
+  "x": "更骚的射手"
+ },
+ {
+  "t": "Movement Speed",
+  "x": "移动速度"
+ },
+ {
+  "t": "Physical Power",
+  "x": "物理之力"
+ },
+ {
+  "t": "Defeat Enemies",
+  "x": "击败敌人"
+ },
+ {
+  "t": "A Tiny Request",
+  "x": "小不点的请求"
+ },
+ {
+  "t": "Return to Rida",
+  "x": "回到丽达身边"
+ },
+ {
+  "t": "Gather a rope.",
+  "x": "找一根绳子。"
+ },
+ {
+  "t": "Find a way out",
+  "x": "找到出路"
+ },
+ {
+  "t": "Escape the Hub",
+  "x": "逃出枢纽"
+ },
+ {
+  "t": "Fix the lights",
+  "x": "修好灯"
+ },
+ {
+  "t": "Defeat Floria.",
+  "x": "击败芙洛拉。"
+ },
+ {
+  "t": "Grab supplies.",
+  "x": "拿些补给。"
+ },
+ {
+  "t": "New Beginnings",
+  "x": "新的开始"
+ },
+ {
+  "t": "Speak to Lady.",
+  "x": "跟女士谈谈。"
+ },
+ {
+  "t": "Chase Wildfire",
+  "x": "追上野火"
+ },
+ {
+  "t": "Lay on the bed",
+  "x": "躺到床上"
+ },
+ {
+  "t": "Gaining Access",
+  "x": "获取权限"
+ },
+ {
+  "t": "Horizon Rescue",
+  "x": "地平线营救"
+ },
+ {
+  "t": "Confront April",
+  "x": "对质艾普丽"
+ },
+ {
+  "t": "Housing Permit",
+  "x": "住房许可"
+ },
+ {
+  "t": "Peitho Soldier",
+  "x": "佩托士兵"
+ },
+ {
+  "t": "Peitho Trapper",
+  "x": "佩托捕手"
+ },
+ {
+  "t": "Martin Morales",
+  "x": "马丁·莫拉莱斯"
+ },
+ {
+  "t": "Liedryn Outfit",
+  "x": "蕾德琳装束"
+ },
+ {
+  "t": "Liedryn Helmet",
+  "x": "蕾德琳头盔"
+ },
+ {
+  "t": "Ahegao Bandana",
+  "x": "阿黑颜头巾"
+ },
+ {
+  "t": "Flogger Outfit",
+  "x": "皮鞭师装"
+ },
+ {
+  "t": "Female Clothes",
+  "x": "女性衣物"
+ },
+ {
+  "t": "Arm Rags Right",
+  "x": "右臂布条"
+ },
+ {
+  "t": "Arm Wraps Left",
+  "x": "左臂缠布"
+ },
+ {
+  "t": "Leg Rags Right",
+  "x": "右腿布条"
+ },
+ {
+  "t": "Leg Wraps Left",
+  "x": "左腿缠布"
+ },
+ {
+  "t": "Jenna's Jacket",
+  "x": "珍娜的夹克"
+ },
+ {
+  "t": "Waitress Skirt",
+  "x": "女侍短裙"
+ },
+ {
+  "t": "Waitress Thong",
+  "x": "女侍丁字裤"
+ },
+ {
+  "t": "Jewel's Outfit",
+  "x": "茱尔的装束"
+ },
+ {
+  "t": "VR Access Card",
+  "x": "VR门禁卡"
+ },
+ {
+  "t": "Holiday Outfit",
+  "x": "节日装"
+ },
+ {
+  "t": "Carcen Tunnels",
+  "x": "卡森坑道"
+ },
+ {
+  "t": "Mines Entrance",
+  "x": "矿坑入口"
+ },
+ {
+  "t": "The Wilderness",
+  "x": "荒野"
+ },
+ {
+  "t": "Cleanse Mental",
+  "x": "净化精神"
+ },
+ {
+  "t": "GenericHealing",
+  "x": "GenericHealing"
+ },
+ {
+  "t": "Move to Target",
+  "x": "移向目标"
+ },
+ {
+  "t": "Shredding Grip",
+  "x": "撕裂之握"
+ },
+ {
+  "t": "Spawn Florians",
+  "x": "生成芙洛里安"
+ },
+ {
+  "t": "Tentacle Snare",
+  "x": "触手陷阱"
+ },
+ {
+  "t": "Weakness: Burn",
+  "x": "弱点：烧伤"
+ },
+ {
+  "t": "RESET Animation",
+  "x": "重置动画"
+ },
+ {
+  "t": "Patreon Version",
+  "x": "Patreon版"
+ },
+ {
+  "t": "Winter Holidays",
+  "x": "冬日假期"
+ },
+ {
+  "t": "EXIT TO DESKTOP",
+  "x": "退出到桌面"
+ },
+ {
+  "t": "Create new save",
+  "x": "新建存档"
+ },
+ {
+  "t": "Skip to Content",
+  "x": "跳到内容"
+ },
+ {
+  "t": "The Wright Brew",
+  "x": "赖特特酿"
+ },
+ {
+  "t": "No items found!",
+  "x": "未找到物品！"
+ },
+ {
+  "t": "Carceburg Slums",
+  "x": "卡斯堡贫民窟"
+ },
+ {
+  "t": "Confirm Changes",
+  "x": "确认更改"
+ },
+ {
+  "t": "Reset Positions",
+  "x": "重置位置"
+ },
+ {
+  "t": "Slave  Clothing",
+  "x": "奴隶  装"
+ },
+ {
+  "t": "Public Lessons:",
+  "x": "公开课："
+ },
+ {
+  "t": "Exit to Windows",
+  "x": "退出到系统"
+ },
+ {
+  "t": "Exit to Desktop",
+  "x": "退出到桌面"
+ },
+ {
+  "t": "Current Recipe\n",
+  "x": "当前配方\n"
+ },
+ {
+  "t": "Mmm~ Delicious!",
+  "x": "嗯~美味！"
+ },
+ {
+  "t": "Take your time.",
+  "x": "慢慢来。"
+ },
+ {
+  "t": "H-Haaaaaaaaaah~",
+  "x": "哈-哈啊~"
+ },
+ {
+  "t": "#Syn_SerifPuns#",
+  "x": "#Syn_SerifPuns#"
+ },
+ {
+  "t": "This is a test!",
+  "x": "这是测试！"
+ },
+ {
+  "t": "You look great!",
+  "x": "你看起来真棒！"
+ },
+ {
+  "t": "Hooh... Fuck...",
+  "x": "呼哦……操……"
+ },
+ {
+  "t": "That's the one!",
+  "x": "就是它！"
+ },
+ {
+  "t": "So are we done?",
+  "x": "那我们完事了？"
+ },
+ {
+  "t": "Yeah... I will.",
+  "x": "嗯……我会的。"
+ },
+ {
+  "t": "Erm! No thanks!",
+  "x": "那个！不用了！"
+ },
+ {
+  "t": "I-.. I did it..",
+  "x": "我-……我做到了……"
+ },
+ {
+  "t": "Guhh..! Fuck..!",
+  "x": "咕……！操……！"
+ },
+ {
+  "t": "Ughh... Fuck...",
+  "x": "呃……操……"
+ },
+ {
+  "t": "Uh-huh.. I bet.",
+  "x": "嗯哼……我信。"
+ },
+ {
+  "t": "Sure, hehehe..~",
+  "x": "当然，嘿嘿嘿……~"
+ },
+ {
+  "t": "I just-.. I-.. ",
+  "x": "我只是-……我-…… "
+ }
+]

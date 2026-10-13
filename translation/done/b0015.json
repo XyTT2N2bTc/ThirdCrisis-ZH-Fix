@@ -1,0 +1,482 @@
+[
+ {
+  "t": "But... why?",
+  "x": "可是……为什么？"
+ },
+ {
+  "t": "R... Right.",
+  "x": "是……是。"
+ },
+ {
+  "t": "Doing good.",
+  "x": "表现不错。"
+ },
+ {
+  "t": "Sweetheart?",
+  "x": "甜心？"
+ },
+ {
+  "t": "Hey! Jenna!",
+  "x": "嘿！珍娜！"
+ },
+ {
+  "t": "Nice place!",
+  "x": "地方不错！"
+ },
+ {
+  "t": "Uhhh... No?",
+  "x": "呃……不？"
+ },
+ {
+  "t": "Oh- Really?",
+  "x": "哦——真的？"
+ },
+ {
+  "t": "I remember.",
+  "x": "我记得。"
+ },
+ {
+  "t": "Th’... Wot?",
+  "x": "那……啥？"
+ },
+ {
+  "t": "Yeah! Here!",
+  "x": "没错！这里！"
+ },
+ {
+  "t": "Me neither…",
+  "x": "我也是……"
+ },
+ {
+  "t": "Oh brother.",
+  "x": "哦天哪。"
+ },
+ {
+  "t": "I WILL NOT!",
+  "x": "我不要！"
+ },
+ {
+  "t": "H-Huh? Wha?",
+  "x": "哈-哈？什么？"
+ },
+ {
+  "t": "Heh, rhyme.",
+  "x": "呵，还押韵。"
+ },
+ {
+  "t": "J-Jewel...?",
+  "x": "茱-茱尔……？"
+ },
+ {
+  "t": "Yeah I can!",
+  "x": "对，我可以！"
+ },
+ {
+  "t": "Horizon...?",
+  "x": "地平线……？"
+ },
+ {
+  "t": "Deactivated",
+  "x": "已停用"
+ },
+ {
+  "t": "Fuck my man",
+  "x": "操我男人"
+ },
+ {
+  "t": "The New Bar",
+  "x": "新酒吧"
+ },
+ {
+  "t": "Bar-ly Able",
+  "x": "勉强行酒吧"
+ },
+ {
+  "t": "Streetwhore",
+  "x": "街头娼妇"
+ },
+ {
+  "t": "Out of Time",
+  "x": "时间耗尽"
+ },
+ {
+  "t": "Talk to HQ.",
+  "x": "找总部谈。"
+ },
+ {
+  "t": "Go to sleep",
+  "x": "去睡觉"
+ },
+ {
+  "t": "Liquid Luck",
+  "x": "幸运药水"
+ },
+ {
+  "t": "Henry Quest",
+  "x": "亨利任务"
+ },
+ {
+  "t": "Karen Bowen",
+  "x": "凯伦·鲍恩"
+ },
+ {
+  "t": "Klaus Tansa",
+  "x": "克劳斯·坦萨"
+ },
+ {
+  "t": "Pyra Outfit",
+  "x": "派拉装束"
+ },
+ {
+  "t": "Cooked Meat",
+  "x": "熟肉"
+ },
+ {
+  "t": "Guard Armor",
+  "x": "守卫护甲"
+ },
+ {
+  "t": "Maid Outfit",
+  "x": "女仆装"
+ },
+ {
+  "t": "Peitho Cowl",
+  "x": "佩托兜帽"
+ },
+ {
+  "t": "Punk Jacket",
+  "x": "朋克夹克"
+ },
+ {
+  "t": "Punk Outfit",
+  "x": "朋克服"
+ },
+ {
+  "t": "GAG Whiskey",
+  "x": "GAG威士忌"
+ },
+ {
+  "t": "Pulse Rifle",
+  "x": "脉冲步枪"
+ },
+ {
+  "t": "Zap Pistols",
+  "x": "电击手枪"
+ },
+ {
+  "t": "Easter Suit",
+  "x": "复活节装"
+ },
+ {
+  "t": "Holiday Hat",
+  "x": "节日帽"
+ },
+ {
+  "t": "ComradeTown",
+  "x": "同志镇"
+ },
+ {
+  "t": "Bar Toilets",
+  "x": "酒吧厕所"
+ },
+ {
+  "t": "Prison Tent",
+  "x": "囚帐篷"
+ },
+ {
+  "t": "Rida's Tent",
+  "x": "丽达的帐篷"
+ },
+ {
+  "t": "Chef's Tent",
+  "x": "厨师的帐篷"
+ },
+ {
+  "t": "Hidden Base",
+  "x": "秘密基地"
+ },
+ {
+  "t": "Rat Hideout",
+  "x": "鼠窝"
+ },
+ {
+  "t": "The Mansion",
+  "x": "豪宅"
+ },
+ {
+  "t": "Wrights Bar",
+  "x": "赖特酒吧"
+ },
+ {
+  "t": "Rocket Dash",
+  "x": "火箭冲刺"
+ },
+ {
+  "t": "Spear Throw",
+  "x": "掷矛"
+ },
+ {
+  "t": "Unlock Count",
+  "x": "解锁数"
+ },
+ {
+  "t": "Achievements",
+  "x": "成就"
+ },
+ {
+  "t": "ACHIEVEMENTS",
+  "x": "成就"
+ },
+ {
+  "t": "RAM: #### MB",
+  "x": "RAM: #### MB"
+ },
+ {
+  "t": "Throat Bulge",
+  "x": "喉咙鼓起"
+ },
+ {
+  "t": "Meanwhile...",
+  "x": "与此同时……"
+ },
+ {
+  "t": "Color Picker",
+  "x": "取色器"
+ },
+ {
+  "t": "Graph Colors",
+  "x": "图表颜色"
+ },
+ {
+  "t": "Music Volume",
+  "x": "音乐音量"
+ },
+ {
+  "t": "Option Name:",
+  "x": "选项名："
+ },
+ {
+  "t": "Move to Exit",
+  "x": "移至出口"
+ },
+ {
+  "t": "Mission Name",
+  "x": "任务名"
+ },
+ {
+  "t": "Recording...",
+  "x": "录制中……"
+ },
+ {
+  "t": "Here I cum~!",
+  "x": "我要去了~！"
+ },
+ {
+  "t": "<i>(...)</i>",
+  "x": "<i>(……)</i>"
+ },
+ {
+  "t": "Uhh... Heya!",
+  "x": "呃……嘿！"
+ },
+ {
+  "t": "Agh... Fuck.",
+  "x": "啊……操。"
+ },
+ {
+  "t": "I-.. n-no..!",
+  "x": "我-……不-不……！"
+ },
+ {
+  "t": "Try... What?",
+  "x": "试……什么？"
+ },
+ {
+  "t": "Your.. Boss?",
+  "x": "你的……老板？"
+ },
+ {
+  "t": "R-.. right..",
+  "x": "是-……是……"
+ },
+ {
+  "t": "Take a pull.",
+  "x": "吸一口。"
+ },
+ {
+  "t": "Turn around.",
+  "x": "转过去。"
+ },
+ {
+  "t": "Pet pet pet!",
+  "x": "摸摸摸！"
+ },
+ {
+  "t": "It's locked.",
+  "x": "锁着呢。"
+ },
+ {
+  "t": "No. Sorry...",
+  "x": "不。抱歉……"
+ },
+ {
+  "t": "The present!",
+  "x": "礼物！"
+ },
+ {
+  "t": "<i>Clunk</i>",
+  "x": "<i>哐当</i>"
+ },
+ {
+  "t": "Ahh! Ffffff!",
+  "x": "啊！呋呋！"
+ },
+ {
+  "t": "Bring it on.",
+  "x": "放马过来。"
+ },
+ {
+  "t": "Delightfull!",
+  "x": "真令人愉快！"
+ },
+ {
+  "t": "Do your job.",
+  "x": "干你的活。"
+ },
+ {
+  "t": "Mnnnhhh-...~",
+  "x": "嗯-……~"
+ },
+ {
+  "t": "Ffuuuckkk...",
+  "x": "操……"
+ },
+ {
+  "t": "R-really..??",
+  "x": "真-真的……？？"
+ },
+ {
+  "t": "Follow me..~",
+  "x": "跟我来……~"
+ },
+ {
+  "t": "On stage-..?",
+  "x": "上台-……？"
+ },
+ {
+  "t": "Th.. Thanks!",
+  "x": "那……谢谢！"
+ },
+ {
+  "t": "Gee, thanks!",
+  "x": "真是多谢！"
+ },
+ {
+  "t": "Here you go.",
+  "x": "给你。"
+ },
+ {
+  "t": "Well-.. I-..",
+  "x": "这个-……我-……"
+ },
+ {
+  "t": "Much better.",
+  "x": "好多了。"
+ },
+ {
+  "t": "They left...",
+  "x": "他们走了……"
+ },
+ {
+  "t": "Aahh fuck!!!",
+  "x": "啊操！！！"
+ },
+ {
+  "t": "Good girl...",
+  "x": "乖女孩……"
+ },
+ {
+  "t": "What, here? ",
+  "x": "什么，这里？ "
+ },
+ {
+  "t": "Let's see...",
+  "x": "让我看看……"
+ },
+ {
+  "t": "Beautiful...",
+  "x": "真美……"
+ },
+ {
+  "t": "500 already!",
+  "x": "已经500了！"
+ },
+ {
+  "t": "Almost 1000!",
+  "x": "快1000了！"
+ },
+ {
+  "t": "Take a seat.",
+  "x": "请坐。"
+ },
+ {
+  "t": "Go to sleep.",
+  "x": "去睡觉。"
+ },
+ {
+  "t": "Who’s Karen?",
+  "x": "凯伦是谁？"
+ },
+ {
+  "t": "What?! I… I…",
+  "x": "什么？！我……我……"
+ },
+ {
+  "t": "I'm serious!",
+  "x": "我是认真的！"
+ },
+ {
+  "t": "Yeah yeah...",
+  "x": "是是……"
+ },
+ {
+  "t": "You're done.",
+  "x": "你完蛋了。"
+ },
+ {
+  "t": "Atta girl...",
+  "x": "好样的……"
+ },
+ {
+  "t": "Good cunt...",
+  "x": "乖小穴……"
+ },
+ {
+  "t": "Sounds fair.",
+  "x": "听起来公平。"
+ },
+ {
+  "t": "Maybe later.",
+  "x": "也许回头吧。"
+ },
+ {
+  "t": "Business...?",
+  "x": "有事……？"
+ },
+ {
+  "t": "Mmmphg...!!!",
+  "x": "唔唔……！！！"
+ },
+ {
+  "t": "Okay then...",
+  "x": "那好吧……"
+ },
+ {
+  "t": "Shit! Sorry.",
+  "x": "糟糕！抱歉。"
+ },
+ {
+  "t": "Ha-- Ffff...",
+  "x": "哈-- 呋……"
+ }
+]

@@ -1,0 +1,290 @@
+[
+ {
+  "t": "Sounds good to me!",
+  "x": "我觉得不错！"
+ },
+ {
+  "t": "I’m… I’m not sure…",
+  "x": "我……我不确定……"
+ },
+ {
+  "t": "I never make puns!",
+  "x": "我从不说双关！"
+ },
+ {
+  "t": "Definitely not me.",
+  "x": "绝对不是我。"
+ },
+ {
+  "t": "Perfect. Carry on.",
+  "x": "完美。继续。"
+ },
+ {
+  "t": "What sort of task?",
+  "x": "什么样的任务？"
+ },
+ {
+  "t": "Okay... Like this?",
+  "x": "好……像这样？"
+ },
+ {
+  "t": "Here. Put this on.",
+  "x": "给。穿上这个。"
+ },
+ {
+  "t": "Here, put this on.",
+  "x": "给，穿上这个。"
+ },
+ {
+  "t": "Enable console (~)",
+  "x": "启用控制台 (~)"
+ },
+ {
+  "t": "Claim your reward.",
+  "x": "领取你的奖励。"
+ },
+ {
+  "t": "Deliver the Report",
+  "x": "递交报告"
+ },
+ {
+  "t": "Come back tomorrow",
+  "x": "明天再来"
+ },
+ {
+  "t": "Gather some bones.",
+  "x": "收集些骨头。"
+ },
+ {
+  "t": "Find coffee grinds",
+  "x": "找到咖啡渣"
+ },
+ {
+  "t": "Flee to the Motel.",
+  "x": "逃去汽车旅馆。"
+ },
+ {
+  "t": "Return to the room",
+  "x": "回到房间"
+ },
+ {
+  "t": "Defeat the guards.",
+  "x": "击败守卫。"
+ },
+ {
+  "t": "Meeting the Family",
+  "x": "见家人"
+ },
+ {
+  "t": "Grab the supplies.",
+  "x": "拿走补给。"
+ },
+ {
+  "t": "Defeat the enemies",
+  "x": "击败敌人"
+ },
+ {
+  "t": "Ask Jewel for help",
+  "x": "请茱尔帮忙"
+ },
+ {
+  "t": "Cheerleader Outfit",
+  "x": "啦啦队服"
+ },
+ {
+  "t": "Choker with Spikes",
+  "x": "带尖刺颈圈"
+ },
+ {
+  "t": "Punk Ear Piercings",
+  "x": "朋克耳部穿孔"
+ },
+ {
+  "t": "Upper Lip Piercing",
+  "x": "上唇穿孔"
+ },
+ {
+  "t": "Lower Lip Piercing",
+  "x": "下唇穿孔"
+ },
+ {
+  "t": "Streetwhore Outfit",
+  "x": "街头娼妇装"
+ },
+ {
+  "t": "Grumpy Man's House",
+  "x": "臭脾气男人的房子"
+ },
+ {
+  "t": "(Attack) Knockback",
+  "x": "（攻击）击退"
+ },
+ {
+  "t": "CategoryName (0/10)",
+  "x": "分类名 (0/10)"
+ },
+ {
+  "t": "Devs live on stream",
+  "x": "开发者直播中"
+ },
+ {
+  "t": "Throb Perversion +5",
+  "x": "悸动 堕落 +5"
+ },
+ {
+  "t": "Breast Size Implant",
+  "x": "胸围植入"
+ },
+ {
+  "t": "Visual Modification",
+  "x": "视觉改造"
+ },
+ {
+  "t": "Carcen Female #3e14",
+  "x": "卡森女性 #3e14"
+ },
+ {
+  "t": "Body Writing \"SLUT\"",
+  "x": "身体涂写“骚货”"
+ },
+ {
+  "t": "Thresholds & Colors",
+  "x": "阈值与颜色"
+ },
+ {
+  "t": "Memory Module State",
+  "x": "记忆模块状态"
+ },
+ {
+  "t": "Find Audio Listener",
+  "x": "找到音频监听器"
+ },
+ {
+  "t": "Thanks for playing!",
+  "x": "感谢游玩！"
+ },
+ {
+  "t": "Heals are cumming~!",
+  "x": "治疗要射来了~！"
+ },
+ {
+  "t": "On your knees, hun.",
+  "x": "跪下，亲爱的。"
+ },
+ {
+  "t": "Mmnnn... My head...",
+  "x": "嗯……我的头……"
+ },
+ {
+  "t": "That's hot, ehehe..",
+  "x": "真性感，诶嘿嘿……"
+ },
+ {
+  "t": "I'll pass.. Sorry..",
+  "x": "我就算了……抱歉……"
+ },
+ {
+  "t": "Whatever you say...",
+  "x": "你说什么都行……"
+ },
+ {
+  "t": "Shit! Let go of me!",
+  "x": "糟了！放开我！"
+ },
+ {
+  "t": "No... He's not a...",
+  "x": "不……他不是……"
+ },
+ {
+  "t": "Fuck, that was hot!",
+  "x": "操，太性感了！"
+ },
+ {
+  "t": "So fucking hot.....",
+  "x": "他妈的太性感了…."
+ },
+ {
+  "t": "Pathetic, ehehe...~",
+  "x": "可悲，诶嘿嘿……~"
+ },
+ {
+  "t": "Hhhaaahh, yesss...~",
+  "x": "呼啊，是是……~"
+ },
+ {
+  "t": "A- I-.. Heh-..! Hi-",
+  "x": "啊——我-……呵-……！嗨-"
+ },
+ {
+  "t": "Who isn’t nowadays?",
+  "x": "如今谁不是呢？"
+ },
+ {
+  "t": "You're missing out.",
+  "x": "你错过好戏了。"
+ },
+ {
+  "t": "Already drunk, huh?",
+  "x": "已经醉了，哈？"
+ },
+ {
+  "t": "Speak to the Witch.",
+  "x": "跟女巫谈谈。"
+ },
+ {
+  "t": "You could say that.",
+  "x": "可以这么说。"
+ },
+ {
+  "t": "How can I help you?",
+  "x": "我能帮你什么？"
+ },
+ {
+  "t": "<i>(Peitho..?!)</i>",
+  "x": "<i>(佩托……？！)</i>"
+ },
+ {
+  "t": "Hehehehe... Good...",
+  "x": "嘿嘿嘿嘿……好……"
+ },
+ {
+  "t": "Yes, I-.. I'm free.",
+  "x": "是，我-……我有空。"
+ },
+ {
+  "t": "Quiet, filthy slut!",
+  "x": "安静，肮脏的骚货！"
+ },
+ {
+  "t": "Good. Now leave us.",
+  "x": "好。现在离开。"
+ },
+ {
+  "t": "Fuck, fuck, fuck!!!",
+  "x": "操，操，操！！！"
+ },
+ {
+  "t": "Aaaahh-.. Ffuck-..!",
+  "x": "啊啊-……操-……！"
+ },
+ {
+  "t": "Now... have a seat.",
+  "x": "现在……请坐。"
+ },
+ {
+  "t": "Sleep in the alley.",
+  "x": "睡在小巷。"
+ },
+ {
+  "t": "Yesss... <b>Yesss!!",
+  "x": "是是……<b>是是！！"
+ },
+ {
+  "t": "You're right, hehe.",
+  "x": "你说得对，嘿嘿。"
+ },
+ {
+  "t": "<i>A while later...",
+  "x": "<i>过了一会儿……"
+ }
+]
