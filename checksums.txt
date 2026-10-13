@@ -3,6 +3,7 @@
 6a4c2e291c0b6cc23dc867bf8537804abb06cd0c5e8f5b71f77f18e41fe986a0  README.md
 f8446ff0c6c96cfe7cfa20fd5803c77f8b7969e5bbea98b686585451f8baa09f  apply_all.py
 cc03f2174e64053165da80d5846e363efa4d385d25724faa7a894256071347b3  docs/2026-10-12-zh-translation-json-full-rewrite.md
+682d434c1ffea6a28383f5fbbe8f7e3a422be3bbb6f2883aa42b025fd4b9b058  docs/2026-10-13-fix-package-published.md
 9349ca54144d4c6514145eea403f58e40192a6aee9c8a389ae513f4653533dd3  docs/2026-10-13-resources-assets-achievements-zh.md
 609c5152b1b91ae9653e40c79ba57db5bfe55f6c447deccf415707fe20250120  docs/2026-10-13-zh-font-missing-glyphs.md
 19fcaaf38fdc1ec3aa300a537a911b2bede972cab025b7e2b9006d8d6e61c708  docs/2026-10-13-zh-language-pack-small-fixes.md
