@@ -142,6 +142,9 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：改了分辨率还是留不住？** 确认用的是 `--patch-dll`（默认流程不改代码，那个 bug 只存在于代码里）；改完启动游戏，设一次分辨率、退出、再启动，应保留。若仍不保留，把 `Settings.sav` 里 `Resolution` 的值在两次启动前后贴给我 —— 值不变说明存档写入路径还有别的问题，值变了说明应用路径还有别的问题。
 - **Q：`--patch-dll` 会影响 Steam 成就/校验吗？** 单机游戏，运行时无校验；Steam"校验文件完整性"会把 DLL 还原成官方版本（本补丁随之失效，重跑即可）。
 - **Q：`--retranslate` 的译文是我要的吗？** 那是本仓附带的一份完整重译语料（23705 条唯一原文），风格偏直白、含成人内容原义不软化。不想要整体替换就别加该参数。
+- **Q：为什么物品提示里还有英文 `Slots: Shirt, Pants`、`(Intact)`？** 这两处是**代码里写死的**，语言文件够不到：`Asuna/Items/Item.cs` 的 `GetTooltipString()` 里 `"Slots: "` 是硬编码英文字面量（约第 231 行），槽位名来自 `EquipmentSlot.ToString()`（枚举名）；耐久等级用 `Enum.GetName(typeof(DurabilityLevel), …)`（约第 297 行）拼出来。要翻译它们得改 DLL 代码（不是简单的等长替换），不属于本仓当前范围。
+- **Q：为什么物品操作按钮在中文下全显示「使用」？** 这三个按钮的标签是**运行时数据**：`PopulateInventoryItem.PopulateFunctions()` 依次加入 `AddFunction("Cancel")`、`AddFunction(Item.UseText)` 和各物品自定义动作的 `DisplayName`（都在代码/资源里，英文，且不经过翻译表）。中文下它们被按钮预制体上的翻译组件按固定 guid 覆盖成同一个词（例：`Use`→使用），所以三个都一样。修这个同样要改代码/资源并关闭该组件的覆盖，属另一档改动。
+- **Q：那物品名/描述/数值呢？** 物品名与描述走 `Items` 段（`TranslatedName`/`TranslatedDescription`），已翻译；数值（如 +7、50/50）是纯数字，不需要翻译。
 - **Q：为什么脚本注释和留档是中文？** 本仓维护者与使用者是中文用户；README 面向中文搜索。
 
 ## 目录

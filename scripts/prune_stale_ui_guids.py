@@ -16,9 +16,13 @@ SCAN_ROOT = os.path.join(ROOT, "ThirdCrisis_Data")
 
 
 def referenced_guids(scan_root=SCAN_ROOT, quiet=False):
-    """返回构建侧实际引用的 guid 集合（排除 Languages 目录与备份文件）。"""
+    """返回构建侧实际引用的 guid 集合（排除 Languages 目录与备份文件）。
+    分块流式扫描：某个 .resS 有近 4GB，整文件读入会 MemoryError。"""
+    import re as _re
+    pat = _re.compile(rb"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
     found = set()
     scanned = 0
+    CHUNK = 8 << 20
     for dp, dn, fn in os.walk(scan_root):
         if os.path.basename(dp) == "Languages":
             continue
@@ -27,13 +31,22 @@ def referenced_guids(scan_root=SCAN_ROOT, quiet=False):
                 continue
             p = os.path.join(dp, f)
             try:
-                with open(p, "rb") as fh:
-                    data = fh.read()
+                fh = open(p, "rb")
             except OSError:
                 continue
             scanned += 1
-            for g in set(__import__("re").findall(rb"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", data)):
-                found.add(g.decode())
+            tail = b""
+            try:
+                while True:
+                    chunk = fh.read(CHUNK)
+                    if not chunk:
+                        break
+                    buf = tail + chunk
+                    for m in pat.finditer(buf):
+                        found.add(m.group(0).decode())
+                    tail = buf[-64:]          # 保留重叠, 避免 guid 跨块被漏
+            finally:
+                fh.close()
     if not quiet:
         print("扫描 %d 个文件, 构建侧引用 guid %d 个" % (scanned, len(found)))
     return found
