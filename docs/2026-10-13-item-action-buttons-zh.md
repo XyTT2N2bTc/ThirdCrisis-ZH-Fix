@@ -24,7 +24,7 @@
   1. **接线**：把上述两个标签组件的 `IgnoreTranslation` 由 0 置 1（`SetText` 会直接 return，动态文字不再被覆盖）。
   2. **动作名（资源）**：`"Open Top"`→`掀开`（3 处）、`"Open Suit"`→`掀开上衣`（1 处）、`"Use on yourself"`→`对自己使用`（2 处）。
   3. **动作名（DLL 字面量）**：`"Equip"`→`"装备   "`、`"Remove"`→`"脱下    "`（UTF-16 字符数相同，故 #US 堆长度不变）。
-- 未改动、并说明原因：`"Use"` 与 `"Cancel"` **不翻译** —— 它们同时是 `InputManager` 的按键绑定名（`GetBindDown("Use")` / `GetBindDown("Cancel")` 遍布代码），与该按钮标签共用同一个 #US 字面量，改写会连带破坏按键绑定；实测 `"Equip"`/`"Remove"` 只用于 `UseText` 赋值（全库各 1 次），故可安全改写。
+- 当时未改动、并说明原因：`"Use"` 与 `"Cancel"` **不翻译** —— 它们同时是 `InputManager` 的按键绑定名（`GetBindDown("Use")` / `GetBindDown("Cancel")` 遍布代码），与该按钮标签共用同一个 #US 字面量，改写会连带破坏按键绑定；实测 `"Equip"`/`"Remove"` 只用于 `UseText` 赋值（全库各 1 次），故可安全改写。（`Cancel` 的显示问题已于 2026-10-19 解决，见文末追加。）
 - 执行时间：2026-10-13 当日
 
 ## 备份与可逆性
@@ -46,7 +46,7 @@ cp -f Managed/Assembly-CSharp.dll.bak-thirdcrisis-actions Managed/Assembly-CShar
 - 接线改动只影响这两个标签组件：它们不再被固定译文覆盖，显示 `PopulateItemCustomFunction` 写入的动态文字。
 - 动作名改写是纯显示文字；`UseText` 同时被用作动作 ID（`UseCustomFunction` 里 `functionName == this.UseText` 与按钮 ID 同源），两边一起变，行为不变。反编译复核：`Equipment.cs` 的两处赋值已是 `"装备   "`/`"脱下    "`，其余代码未动。
 - 排查指引：若按钮仍全是同一个词，说明 `resources.assets` 被官方还原（重跑脚本）；若按钮文字成了英文而各项功能正常，说明只打了资源部分没打 DLL（加 `--patch-dll` 重跑）。
-- 已知残留：`Use`/`Cancel` 两个词在界面上仍是英文（原因见上）。要汉化需改按键绑定体系，属另一档改动。
+- 已知残留（截至 2026-10-13）：`Use`/`Cancel` 两个词在界面上仍是英文（原因见上）。其中 `Cancel` 已于 2026-10-19 解决（见文末追加）；`Use` 仍未动。
 
 ## 验证与文件清单
 
@@ -59,3 +59,19 @@ cp -f Managed/Assembly-CSharp.dll.bak-thirdcrisis-actions Managed/Assembly-CShar
 ## 第三方工具清单
 
 - `dnSpyEx dnSpy.Console.exe`（`…\tmp\dnspy\`）—— 仅用于反编译定位与复核，不参与游戏运行。
+
+## 2026-10-19 追加：Cancel 按钮显示为「取消」
+
+- 现象（用户反馈）：按钮接线与动作名修好后，`Cancel` 按钮仍显示英文。
+- 约束复核：
+  - `"Cancel"` 这一条 #US 字面量全程序集有 **26 处** `ldstr` 引用，其余 25 处是 `GetBindDown("Cancel")` / `AddBindDownListener("Cancel")` 等按键绑定名，**不能改字面量**（改了会废掉取消键和 `Settings.sav` 里的 `Bind-Cancel`）。
+  - 逐个枚举 `#US` 堆：**2784 条全部被至少一处 `ldstr` 引用，不存在“无人引用”的空槽**（早前误把 `"StepsWalked"` 当成空槽；它是活的统计/存档键，有 3 处引用，该实验已完整回退）。
+  - 追加字符串到堆尾需要平移 `#GUID`/`#Blob` 及紧随元数据的调试/符号区（内含绝对 RVA），风险不可接受，放弃。
+- 最终做法（只动显示路径，堆布局不变）：
+  1. 在 `#US` 里选一个**语义上只用于日志**的条目：`"WIN" @0xAA0B` —— 全程序集仅 1 处 `ldstr`，紧跟 `Debug.Log`（反编译确认）。
+  2. 等长改写该条目为 `"取消 "`（原 3 字符 → 2 汉字 + 1 空格，长度前缀不变）。
+  3. 把 `PopulateFunctions` 里 `ldstr "Cancel"` 的 token 由 `0x70000823` 改为 `0x7000AA0B`（`Cancel ldstr + call AddFunction` 的唯一起点）。
+- 行为影响：按钮显示「取消」；`ID` 随之变成 `"取消 "`，`UseCustomFunction` 对它仍返回 null（与原来 `"Cancel"` 一样是 no-op），取消/关闭逻辑由独立的 `HideCustomFunctions` 监听器负责，不受影响。唯一副作用：某条调试日志文本变为「取消 」（只写 `Player.log`）。
+- 验证：DLL 改动 22 字节（槽位 4 + token 4 + 此前 `Equip`/`Remove`），**预期外 0 字节**；dnSpy 反编译 `PopulateInventoryItem.PopulateFunctions()` 显示 `this.AddFunction("取消 ")`，`CombatPlayerUI` 仍是 `GetBindDown("Cancel", false)`；`"Cancel"` 引用数 26 → 25（减去改指的 1 处显示站点）。
+- 幂等：脚本重跑输出「已是补丁后的状态……仅校验」，校验通过。
+- 未运行项：未启动游戏进背包目视确认；需用户验证。
