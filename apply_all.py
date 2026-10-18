@@ -131,6 +131,13 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 装备店里写死的英文：购买确认语 / Yes-No / 已拥有标记 / 两条错误提示
+        print("装备店文本:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_shop_texts.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
 
