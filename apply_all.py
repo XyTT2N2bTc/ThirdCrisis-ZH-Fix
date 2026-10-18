@@ -116,6 +116,11 @@ def main():
         cmd.append("--apply")
     ok = _sp.call(cmd) == 0 and ok
 
+    # ---- 3e. 暂停菜单 History 标签：与 Options 共用了同一个 UILocalization guid ----
+    import fix_pause_history
+    print("\n暂停菜单 History 标签:", assets)
+    ok = (fix_pause_history.main(a.apply, assets, lang) == 0) and ok
+
     # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
     if a.patch_dll:
         import subprocess

@@ -34,6 +34,7 @@ No translation for Journal project_mindcrush:entry_05
 | 城镇里 NPC 的自言自语（如市政厅排队时那句）仍是英文 | ✅ 汉化资源里烤死的 7 句等待闲话（同名资产内就地改） |
 | 背包里物品的操作按钮全显示同一个词（如三个「使用」） | ✅ 关掉标签上的固定译文覆盖（接线）+ 动作名汉化；`Cancel` 显示为「取消」需加 `--patch-dll`，`Use` 因同时是按键绑定名仍为英文 |
 | 场景画廊里的分类名/条目名/解锁提示是英文（如 `FREE SHOWER ACCESS` 的 `HINT: After unlocking the showers… ask Klaus…`） | ✅ 就地汉化资源里写死的 532 条字符串；并把提示文本/场景按钮提示的旧版字体换成中文 Noto Serif SC |
+| ESC 菜单里 `History` 显示成「选项」 | ✅ 两个标签共用了同一个 UILocalization guid（原游戏缺陷）；给 History 换独立 guid 并补 `HISTORY → 历史记录` |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -130,7 +131,8 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 资产（成就）：33/33 条复解析读回中文；按文件自身长度前缀读取并 UTF-8 解码 = 目标中文 66/66；长度前缀 = 对齐后大小 66/66；改动字节 1681 个，全部落在 66 个字符串槽内（槽外 0）。
 - 资产（字体）：`TMP Settings.m_fallbackFontAssets` = `[Arial SDF, NotoSerifSC-Regular SDF]`；15 个字体资产回退表含中文字体；`NotoSerifSC-Regular SDF.m_IsMultiAtlasTexturesEnabled` = 1（其图集原只有 736 字形，而中文译文用到 2568 种非 ASCII 字符）。对象摘要比对：改前 161,312 / 改后 161,312，**非预期变化 0**。
 - 资产（场景画廊）：`Gallery` 对象 532 条字符串（38 分类 + 247 条目名 + 247 解锁提示）复解析读回中文 532/532；字符串起始偏移全部未变；长度前缀 = 原分配长度 − 4；两处字体 PPtr 已指向 `NotoSerifSC-Regular`（pathID 10547）；改动字节全部落在字符串分配区或字体 PPtr 内（区外 0），文件大小不变。
-- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `9734efcf9beccebb…`、`resources.assets` `384715942c0c2507…`）。
+- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `b21f8590ee89643d…`、`resources.assets` `7852df897f49e119…`）。
+- 暂停菜单 History：组件 151279 的 guid → `b7c2e4a1-…`（Options 的 157749 保持 `042b7b07-…`）；语言包 `UILocalizations` 29291 → 29292，新条目 `HISTORY → 历史记录`；资源只改 36 字节，文件大小不变。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
 - 幂等：对已修补状态重跑，全部步骤报 0 改动。
 - **打包期自查**：第一版 DLL 补丁误把 NOP 写成 `0x90`（那是 x86 的 nop；IL 的 nop 是 `0x00`），反编译复核时发现该处被解成 11 条 `ldelem.i1`（栈会失衡），已改正为 `0x00` 并重新验证。
@@ -149,6 +151,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：`--retranslate` 的译文是我要的吗？** 那是本仓附带的一份完整重译语料（23705 条唯一原文），风格偏直白、含成人内容原义不软化。不想要整体替换就别加该参数。
 - **Q：为什么操作按钮里的 `Use` 还是英文？** 这个词同时是 `InputManager` 的按键绑定名（`GetBindDown("Use")` 遍布代码），与按钮标签共用同一个 #US 字面量，改写会破坏按键绑定，故只汉化了只作显示用的 `Equip`/`Remove` 与资源里的动作名（`Open Top` 等）。
 - **Q：`Cancel` 是怎么汉化的？** `"Cancel"` 同样被 26 处代码共用（多数是 `GetBindDown("Cancel")`），不能改。做法是**只改显示路径**：把 `PopulateInventoryItem.PopulateFunctions()` 里那条 `ldstr "Cancel"` 的 token 指向 #US 里一个只被 `Debug.Log` 使用的字符串槽位（`"WIN"`，全程序集仅 1 处引用），把该槽内容等长改写为 `取消`。按键绑定仍用原来那条 `"Cancel"`，功能不受影响；唯一副作用是那条调试日志文本变成「取消」（只写 Player.log，不进游戏界面）。
+- **Q：为什么 ESC 菜单里的 `History` 之前显示成「选项」？** 原游戏里 `History` 和 `Options` 两个标签上的 `UILocalization` 组件用了**同一个 guid**（`042b7b07-…`），语言包给这个 guid 的译文是「选项」，所以两个按钮都显示「选项」。英文下 `SetTextToTranslation` 用的是各文本组件自己缓存的原文（`HISTORY` / `OPTIONS`），因此只有本地化后才暴露。本仓把 History 标签的 guid 换成独立值（`b7c2e4a1-…`），并在语言包里补了 `HISTORY → 历史记录`。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
 - **Q：为什么物品提示里还有英文 `Slots: Shirt, Pants`、`(Intact)`？** 这两处是**代码里写死的**，语言文件够不到：`Asuna/Items/Item.cs` 的 `GetTooltipString()` 里 `"Slots: "` 是硬编码英文字面量（约第 231 行），槽位名来自 `EquipmentSlot.ToString()`（枚举名）；耐久等级用 `Enum.GetName(typeof(DurabilityLevel), …)`（约第 297 行）拼出来。要翻译它们得改 DLL 代码（不是简单的等长替换），不属于本仓当前范围。
 - **Q：为什么物品操作按钮在中文下全显示「使用」？** 这三个按钮的标签是**运行时数据**：`PopulateInventoryItem.PopulateFunctions()` 依次加入 `AddFunction("Cancel")`、`AddFunction(Item.UseText)` 和各物品自定义动作的 `DisplayName`（都在代码/资源里，英文，且不经过翻译表）。中文下它们被按钮预制体上的翻译组件按固定 guid 覆盖成同一个词（例：`Use`→使用），所以三个都一样。修这个同样要改代码/资源并关闭该组件的覆盖，属另一档改动。
@@ -169,6 +172,7 @@ scripts/
   patch_resolution_persist.py    改 DLL 11 字节，修分辨率设置不持久（仅 --patch-dll 时运行）
   patch_item_action_labels.py    按钮接线 + 动作名/UseText/Cancel 显示文字（DLL 部分仅 --patch-dll 时运行）
   patch_gallery_zh.py            场景画廊分类/条目名/解锁提示汉化 + 旧版 Text 换中文字体
+  fix_pause_history.py           修 ESC 菜单 History 与 Options 共用 guid 导致显示「选项」
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）
