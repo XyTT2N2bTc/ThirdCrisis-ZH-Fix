@@ -32,7 +32,7 @@ No translation for Journal project_mindcrush:entry_05
 | 界面显示的版本号是 `0.39.0-pr` / `0.40.0-pr` 之类旧版本 | ✅ 改为本作实际版本 |
 | 改了分辨率，重启游戏又变回原来的分辨率（窗口甚至超出屏幕显示不全） | ✅ 需要 `--patch-dll`（改 Assembly-CSharp.dll 一处多余调用） |
 | 城镇里 NPC 的自言自语（如市政厅排队时那句）仍是英文 | ✅ 汉化资源里烤死的 7 句等待闲话（同名资产内就地改） |
-| 背包里物品的操作按钮全显示同一个词（如三个「使用」） | ✅ 关掉标签上的固定译文覆盖（接线）+ 动作名汉化；`Cancel` 已显示为「取消」，`Use` 因同时是按键绑定名仍为英文 |
+| 背包里物品的操作按钮全显示同一个词（如三个「使用」） | ✅ 关掉标签上的固定译文覆盖（接线）+ 动作名汉化；`Cancel` 显示为「取消」需加 `--patch-dll`，`Use` 因同时是按键绑定名仍为英文 |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -81,7 +81,7 @@ python apply_all.py --game "<游戏目录>" --apply --patch-dll
 - `--skip-assets`：只做语言包四项修补（设置项键、日志、版本号、清理过期条目）。**不覆盖**成就与缺字。
 - 默认（含资产）：额外做成就汉化 + 字体回退修复。**不覆盖**整份重译、也不改代码。
 - `--retranslate`：在语言包修补**之前**先用 `translation/done` 的语料回填整份中文（顺序有意如此：日志标题按 `Name` 匹配，后置的改名会让语料匹配不上）。语料要求你的语言文件与本仓基于同一版本（0.57.1）；不匹配时 `merge.py` 会报"未命中落点"。
-- `--patch-dll`：唯一会改游戏代码的一项，见下面「分辨率设置为什么不生效」。
+- `--patch-dll`：唯一会改游戏代码的一项 —— 分辨率持久化（见下节）+ 按钮标签的 `Equip`/`Remove`/`Cancel` 显示文字。
 
 备份与还原：脚本第一次写入前会留 `.bak`（语言文件为 `.bak`，资产为 `.bak-thirdcrisis-zh-ach` / `.bak-thirdcrisis-zh-font`）。还原就是把对应 `.bak` 拷回原名。
 
@@ -112,10 +112,11 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 
 - 默认流程**不改游戏可执行文件**：只改两个数据文件（语言 JSON、`resources.assets`）。
 - **资产改动是定量的**：成就改写是"原字节 + 仅字符串槽内变化"（长度前缀按原对齐大小回填，文件大小不变）；字体改动只动回退表与一个开关位 —— 实测 161,312 个对象里非预期变化 0，且改动对象的字节恰为"表尾多一条 PPtr"或"单字节 0→1"。
-- `--patch-dll`（可选）**会改 `Managed/Assembly-CSharp.dll`**，但只改上面那 11 字节，且：
-  - 先备份为 `Assembly-CSharp.dll.bak-thirdcrisis-resolution`；脚本定位不到唯一序列时**拒绝执行**（版本不符不会被误改）；
-  - 等长改写，文件大小与所有 IL 偏移不变；改后把整个程序集重新反编译，与改前逐文件比对，**唯一差异就是那一行 `resOption.SetInt(num);` 消失**（3242 个文件，其余全同）；
-  - 还原：把 `.bak-thirdcrisis-resolution` 覆盖回 `Assembly-CSharp.dll` 即可。Steam 校验文件完整性也会还原它。
+- `--patch-dll`（可选）**会改 `Managed/Assembly-CSharp.dll`**，共两部分，全部等长改写（文件大小与所有 IL 偏移不变）：
+  - **分辨率**：上面那 11 字节改成 NOP；备份 `Assembly-CSharp.dll.bak-thirdcrisis-resolution`；定位不到唯一序列时**拒绝执行**（版本不符不会被误改）。
+  - **按钮标签**：`Equip`→`装备   `、`Remove`→`脱下    `（同 UTF-16 字符数）；`Cancel` 只改**显示**路径 —— 把 `PopulateFunctions` 里那条 `ldstr "Cancel"` 的 token 指向一个仅用于 `Debug.Log` 的 #US 槽位并把内容改为「取消 」，按键绑定用的 `"Cancel"` 字面量（25 处）原样保留。备份 `Assembly-CSharp.dll.bak-thirdcrisis-actions`。
+  - 复核：反编译后 `PopulateInventoryItem` 显示 `AddFunction("取消 ")`，同时 `CombatPlayerUI` 等处仍是 `GetBindDown("Cancel", false)`；分辨率补丁的全程序集反编译差异仍只有那一行 `resOption.SetInt(num);` 消失。
+  - 还原：把 `.bak-thirdcrisis-actions` 覆盖回去可只撤按钮标签；要连分辨率一起还原，再用 `.bak-thirdcrisis-resolution`。Steam 校验文件完整性也会还原它。
 - 本仓**不改存档目录**（`%USERPROFILE%\AppData\LocalLow\Anduo Games\Third Crisis`）；分辨率/按键等设置存在那里的 `Settings.sav`，脚本不碰。
 - **fail-closed 保留**：清理过期 UI 条目设有防呆 —— 若扫描到的构建引用 guid 少于包内一半（例如扫描目录给错），一律拒绝执行；日志条目只增/改 Id，不删任何条目；版本号只改 `text`，保留 `originalText`（设置项的存盘键正是由 `originalText` 派生，改名会让所有设置失联，故绝不动它）。
 
@@ -128,7 +129,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 资产（成就）：33/33 条复解析读回中文；按文件自身长度前缀读取并 UTF-8 解码 = 目标中文 66/66；长度前缀 = 对齐后大小 66/66；改动字节 1681 个，全部落在 66 个字符串槽内（槽外 0）。
 - 资产（字体）：`TMP Settings.m_fallbackFontAssets` = `[Arial SDF, NotoSerifSC-Regular SDF]`；15 个字体资产回退表含中文字体；`NotoSerifSC-Regular SDF.m_IsMultiAtlasTexturesEnabled` = 1（其图集原只有 736 字形，而中文译文用到 2568 种非 ASCII 字符）。对象摘要比对：改前 161,312 / 改后 161,312，**非预期变化 0**。
 - **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `09f15105670129e3…`、`resources.assets` `b9aba8f8290c40b1…`）。
-- **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
+- **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
 - 幂等：对已修补状态重跑，全部步骤报 0 改动。
 - **打包期自查**：第一版 DLL 补丁误把 NOP 写成 `0x90`（那是 x86 的 nop；IL 的 nop 是 `0x00`），反编译复核时发现该处被解成 11 条 `ldelem.i1`（栈会失衡），已改正为 `0x00` 并重新验证。
 
@@ -164,6 +165,7 @@ scripts/
   patch_achievements.py          成就名称/描述就地汉化（同大小改写）
   fix_font_fallback.py           中文字体接入 TMP 回退链 + 开多图集
   patch_resolution_persist.py    改 DLL 11 字节，修分辨率设置不持久（仅 --patch-dll 时运行）
+  patch_item_action_labels.py    按钮接线 + 动作名/UseText/Cancel 显示文字（DLL 部分仅 --patch-dll 时运行）
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）
