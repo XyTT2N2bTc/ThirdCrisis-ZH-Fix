@@ -32,6 +32,7 @@ No translation for Journal project_mindcrush:entry_05
 | 界面显示的版本号是 `0.39.0-pr` / `0.40.0-pr` 之类旧版本 | ✅ 改为本作实际版本 |
 | 改了分辨率，重启游戏又变回原来的分辨率（窗口甚至超出屏幕显示不全） | ✅ 需要 `--patch-dll`（改 Assembly-CSharp.dll 一处多余调用） |
 | 城镇里 NPC 的自言自语（如市政厅排队时那句）仍是英文 | ✅ 汉化资源里烤死的 7 句等待闲话（同名资产内就地改） |
+| 背包里物品的操作按钮全显示同一个词（如三个「使用」） | ✅ 关掉标签上的固定译文覆盖（接线）+ 动作名汉化；`Use`/`Cancel` 因同时是按键绑定名仍为英文 |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -143,6 +144,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：改了分辨率还是留不住？** 确认用的是 `--patch-dll`（默认流程不改代码，那个 bug 只存在于代码里）；改完启动游戏，设一次分辨率、退出、再启动，应保留。若仍不保留，把 `Settings.sav` 里 `Resolution` 的值在两次启动前后贴给我 —— 值不变说明存档写入路径还有别的问题，值变了说明应用路径还有别的问题。
 - **Q：`--patch-dll` 会影响 Steam 成就/校验吗？** 单机游戏，运行时无校验；Steam"校验文件完整性"会把 DLL 还原成官方版本（本补丁随之失效，重跑即可）。
 - **Q：`--retranslate` 的译文是我要的吗？** 那是本仓附带的一份完整重译语料（23705 条唯一原文），风格偏直白、含成人内容原义不软化。不想要整体替换就别加该参数。
+- **Q：为什么操作按钮里的 `Use` / `Cancel` 还是英文？** 这两个词同时是 `InputManager` 的按键绑定名（`GetBindDown("Use")`/`GetBindDown("Cancel")` 遍布代码），与按钮标签共用同一个 #US 字面量，改写会破坏按键绑定，故只汉化了只作显示用的 `Equip`/`Remove` 与资源里的动作名（`Open Top` 等）。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
 - **Q：为什么物品提示里还有英文 `Slots: Shirt, Pants`、`(Intact)`？** 这两处是**代码里写死的**，语言文件够不到：`Asuna/Items/Item.cs` 的 `GetTooltipString()` 里 `"Slots: "` 是硬编码英文字面量（约第 231 行），槽位名来自 `EquipmentSlot.ToString()`（枚举名）；耐久等级用 `Enum.GetName(typeof(DurabilityLevel), …)`（约第 297 行）拼出来。要翻译它们得改 DLL 代码（不是简单的等长替换），不属于本仓当前范围。
 - **Q：为什么物品操作按钮在中文下全显示「使用」？** 这三个按钮的标签是**运行时数据**：`PopulateInventoryItem.PopulateFunctions()` 依次加入 `AddFunction("Cancel")`、`AddFunction(Item.UseText)` 和各物品自定义动作的 `DisplayName`（都在代码/资源里，英文，且不经过翻译表）。中文下它们被按钮预制体上的翻译组件按固定 guid 覆盖成同一个词（例：`Use`→使用），所以三个都一样。修这个同样要改代码/资源并关闭该组件的覆盖，属另一档改动。

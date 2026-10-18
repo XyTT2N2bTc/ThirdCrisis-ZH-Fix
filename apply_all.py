@@ -94,6 +94,18 @@ def main():
     print("\n等待闲话:", assets)
     ok = (patch_waiting_lines.ensure(assets, a.apply) == 0) and ok
 
+    # ---- 3c. 物品操作按钮：接线（关掉固定译文覆盖）+ 动作名汉化 ----
+    import subprocess
+    print("物品操作按钮:", assets)
+    cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_item_action_labels.py"),
+           "--asset", assets,
+           "--dll", os.path.join(a.game, "ThirdCrisis_Data", "Managed", "Assembly-CSharp.dll")]
+    if not a.patch_dll:
+        cmd.append("--skip-dll")
+    if a.apply:
+        cmd.append("--apply")
+    ok = subprocess.call(cmd) == 0 and ok
+
     # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
     if a.patch_dll:
         import subprocess
