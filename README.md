@@ -33,6 +33,7 @@ No translation for Journal project_mindcrush:entry_05
 | 改了分辨率，重启游戏又变回原来的分辨率（窗口甚至超出屏幕显示不全） | ✅ 需要 `--patch-dll`（改 Assembly-CSharp.dll 一处多余调用） |
 | 城镇里 NPC 的自言自语（如市政厅排队时那句）仍是英文 | ✅ 汉化资源里烤死的 7 句等待闲话（同名资产内就地改） |
 | 背包里物品的操作按钮全显示同一个词（如三个「使用」） | ✅ 关掉标签上的固定译文覆盖（接线）+ 动作名汉化；`Cancel` 显示为「取消」需加 `--patch-dll`，`Use` 因同时是按键绑定名仍为英文 |
+| 场景画廊里的分类名/条目名/解锁提示是英文（如 `FREE SHOWER ACCESS` 的 `HINT: After unlocking the showers… ask Klaus…`） | ✅ 就地汉化资源里写死的 532 条字符串；并把提示文本/场景按钮提示的旧版字体换成中文 Noto Serif SC |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -128,7 +129,8 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 语言包不变式：包内 786 个 guid **全部**被当前构建引用（未引用数 0）。
 - 资产（成就）：33/33 条复解析读回中文；按文件自身长度前缀读取并 UTF-8 解码 = 目标中文 66/66；长度前缀 = 对齐后大小 66/66；改动字节 1681 个，全部落在 66 个字符串槽内（槽外 0）。
 - 资产（字体）：`TMP Settings.m_fallbackFontAssets` = `[Arial SDF, NotoSerifSC-Regular SDF]`；15 个字体资产回退表含中文字体；`NotoSerifSC-Regular SDF.m_IsMultiAtlasTexturesEnabled` = 1（其图集原只有 736 字形，而中文译文用到 2568 种非 ASCII 字符）。对象摘要比对：改前 161,312 / 改后 161,312，**非预期变化 0**。
-- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `09f15105670129e3…`、`resources.assets` `b9aba8f8290c40b1…`）。
+- 资产（场景画廊）：`Gallery` 对象 532 条字符串（38 分类 + 247 条目名 + 247 解锁提示）复解析读回中文 532/532；字符串起始偏移全部未变；长度前缀 = 原分配长度 − 4；两处字体 PPtr 已指向 `NotoSerifSC-Regular`（pathID 10547）；改动字节全部落在字符串分配区或字体 PPtr 内（区外 0），文件大小不变。
+- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `9734efcf9beccebb…`、`resources.assets` `384715942c0c2507…`）。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
 - 幂等：对已修补状态重跑，全部步骤报 0 改动。
 - **打包期自查**：第一版 DLL 补丁误把 NOP 写成 `0x90`（那是 x86 的 nop；IL 的 nop 是 `0x00`），反编译复核时发现该处被解成 11 条 `ldelem.i1`（栈会失衡），已改正为 `0x00` 并重新验证。
@@ -166,10 +168,12 @@ scripts/
   fix_font_fallback.py           中文字体接入 TMP 回退链 + 开多图集
   patch_resolution_persist.py    改 DLL 11 字节，修分辨率设置不持久（仅 --patch-dll 时运行）
   patch_item_action_labels.py    按钮接线 + 动作名/UseText/Cancel 显示文字（DLL 部分仅 --patch-dll 时运行）
+  patch_gallery_zh.py            场景画廊分类/条目名/解锁提示汉化 + 旧版 Text 换中文字体
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）
   glossary.md             译名表与排版约定
+  gallery_zh_map.json     场景画廊 532 条字符串的英文→中文映射
 docs/                     逐次改动的留档记录（主体版本、逐字报错、实测数字、还原命令）
 checksums.txt             全部文件 sha256
 ```

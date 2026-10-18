@@ -6,12 +6,14 @@
     python apply_all.py --game "D:\\SteamLibrary\\steamapps\\common\\Third Crisis" --apply
     python apply_all.py --game "<同上>"                 # 只演练并校验，不写文件
 
-做四件事（各自幂等，可重复运行）：
+做五件事（各自幂等，可重复运行）：
   1. 语言包修补：补 11 条缺失设置项键、修 11 条日志 Id 并补 21 条日志条目、
      把陈旧版本号改成本作实际版本、清理 141 个构建已不引用的过期 UI 条目
   2. 成就汉化：把 resources.assets 里 33 个成就的名称/描述就地改成中文（同大小改写）
   3. 字体修复：把游戏自带的中文字体 Noto Serif SC 挂进 TMP 回退链，并为其开启多图集
-  4. 可选整体重译：用 translation/done 的译文语料回填整个中文语言文件（--retranslate）
+  4. 场景画廊汉化：分类名/条目名/解锁提示（资源里写死的英文）就地汉化，
+     并把两处旧版 UI.Text 的字体换成中文 Noto Serif SC（否则中文显示成方块）
+  5. 可选整体重译：用 translation/done 的译文语料回填整个中文语言文件（--retranslate）
 
 依赖：第 2、3 步需要 `pip install "UnityPy[ttgen]"`（离线资产编辑；游戏运行不需要它）。
 """
@@ -105,6 +107,14 @@ def main():
     if a.apply:
         cmd.append("--apply")
     ok = subprocess.call(cmd) == 0 and ok
+
+    # ---- 3d. 场景画廊：分类/条目名/解锁提示汉化 + 旧版 Text 换中文字体 ----
+    import subprocess as _sp
+    print("\n场景画廊汉化:", assets)
+    cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_gallery_zh.py"), "--asset", assets]
+    if a.apply:
+        cmd.append("--apply")
+    ok = _sp.call(cmd) == 0 and ok
 
     # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
     if a.patch_dll:

@@ -96,6 +96,8 @@ def main():
     A = bytearray(open(asset, "rb").read())
     D = bytearray(open(dll, "rb").read())
     A0, D0 = len(A), len(D)
+    # 本脚本的校验基线：本次运行前的快照（不与其他补丁的改动互相误报）
+    Abefore, Dbefore = bytes(A), bytes(D)
 
     # ---------------- 计算各段 ----------------
     # 1) 接线
@@ -269,8 +271,7 @@ def main():
 
     # ---------------- 校验 ----------------
     An = open(asset, "rb").read()
-    Ao = open(asset + ".bak-thirdcrisis-actions", "rb").read()
-    da = [i for i in range(A0) if An[i] != Ao[i]]
+    da = [i for i in range(A0) if An[i] != Abefore[i]]
     allowed = set()
     for off in wire:
         allowed.update(range(off, off + 4))
@@ -292,8 +293,7 @@ def main():
     dd_out = []
     if not skip_dll:
         Dn = open(dll, "rb").read()
-        Do = open(dll + ".bak-thirdcrisis-actions", "rb").read()
-        dd = [i for i in range(D0) if Dn[i] != Do[i]]
+        dd = [i for i in range(D0) if Dn[i] != Dbefore[i]]
         exp = set()
         for en, zh in DLL_LITERALS:
             lit = us_literal(zh)
