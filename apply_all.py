@@ -89,6 +89,11 @@ def main():
     print("\n字体修复:", assets)
     ok = (fix_font_fallback.main(apply=a.apply) == 0) and ok
 
+    # ---- 3b. 等待闲话（NPC 在城镇里的自言自语，烤在资源里，语言文件够不到）----
+    import patch_waiting_lines
+    print("\n等待闲话:", assets)
+    ok = (patch_waiting_lines.ensure(assets, a.apply) == 0) and ok
+
     # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
     if a.patch_dll:
         import subprocess
