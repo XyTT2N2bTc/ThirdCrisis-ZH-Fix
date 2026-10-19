@@ -42,6 +42,7 @@ No translation for Journal project_mindcrush:entry_05
 | 战斗偶发同样卡死，日志里是 `PMA_CameraTransitionBetweenPositions` / `PMA_CombatVisualEffect` 的 `NullReferenceException` | ✅ 需要 `--patch-dll`：两处加空对象保护（为空则结束动作并补发完成事件） |
 | 相机保护后 `PMA_SetCameraOrthSize.LerpOrtho` 仍偶发 NRE（相机在协程运行期间被销毁） | ✅ 需要 `--patch-dll`：该动作改为立即设置尺寸（不再起协程），彻底消除这条路径 |
 | 任务完成时日志里 `MissionWidgetTask.Finish` 抛 `ArgumentNullException`（字典空键），由 PlayMaker 调用 | ✅ 需要 `--patch-dll`：Task/Info/Widget 为空时直接返回 |
+| 想让 patron/非 public 内容都可访问（`SemanticVersion.IsPublic`） | ✅ 需要 `--patch-dll`：`IsPublic` 恒返回 `false`（对应手动改源码的 `return false;`） |
 | 战斗里切换装备/使用物品的体力提示是英文 | ✅ 需要 `--patch-dll`：四条对话框提示已汉化 |
 | 任务/资料里「皱巴巴的字条」正文是看不懂的乱码 | ✅ 改为「（字迹潦草，无法辨认）」（原文即不可读占位） |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
@@ -149,6 +150,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 战斗余留 NRE（`--patch-dll`）：`PMA_CameraTransitionBetweenPositions.OnEnter` 新方法体 139 字节放在 `.reloc` 文件 `0x43412C`（RVA `0x43812C`），MethodDef RID 335 的 RVA `0x6450` → `0x43812C`；`PMA_CombatVisualEffect.OnEnter` 新方法体 142 字节放在 `0x4341B8`（RVA `0x4381B8`），MethodDef RID 12391 的 RVA `0xE99C4` → `0x4381B8`；`.reloc` RawSize/VirtualSize `0x200` → `0x400`（文件 +0x200）。dnSpy 复核两处判空正确。
 - 相机缩放快照化（`--patch-dll`）：`PMA_SetCameraOrthSize.OnEnter` 新方法体内 `ShouldSnap.Value` 后的 `brfalse.s` 改为 `pop; nop`（文件 `0x4340EB`），恒走快照路径；dnSpy 反编译确认不再调用 `StartCoroutine(LerpOrtho)`。
 - 任务 HUD 保护（`--patch-dll`）：`MissionWidgetTask.Finish` 新方法体 143 字节放在 `.reloc` 文件 `0x434248`（RVA `0x438248`），MethodDef RID 9969 的 RVA `0xBB02C` → `0x438248`；dnSpy 反编译为 `if (this.Task && this.Info != null && this.Widget && this.Widget.ShouldDequeue)`。
+- 手动修改移植（`--patch-dll`）：`SemanticVersion.get_IsPublic` 恒返回 `false`（小头 code size 20 → 2，代码 `ldc.i4.0; ret`，文件 `0x108AA7`）；dnSpy 反编译确认 `return false;`。
 - 战斗提示文本（`--patch-dll`）：4 条 #US 字符串等长改写，DLL 改动 278 字节，区间外 0。
 - 日志占位纸条：`fiend_notes:crumpled_note` 的 `TranslatedContents` →「（字迹潦草，无法辨认）」；其余日志条目不变。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
@@ -177,6 +179,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：修了相机保护后为什么还会偶发卡死？** 同一类“对象已销毁、协程/FSM 仍在取值”的问题还有两处：`PMA_CameraTransitionBetweenPositions.OnEnter`（PositionA/B 为空或已销毁）和 `PMA_CombatVisualEffect.doAnimation`（Origin/TargetCharacter 为空或已销毁）。两者都会抛 NRE 并让使用它们的 FSM 卡住。本仓分别加了判空：前者为空直接 `Finish()`；后者在 `OnEnter` 检查选中的 `CharacterHandler`，不可用则补发 `VisualEffectDone` 并 `Finish()`，不再启动协程。
 - **Q：相机保护都加了，为什么 `PMA_SetCameraOrthSize.LerpOrtho` 还会偶发 NRE？** 因为相机可能是在 `LerpOrtho` **协程运行期间**才被销毁的，`OnEnter` 的判空挡不住。本仓把该动作的 `ShouldSnap` 分支改为恒走快照路径：立即设置 `orthographicSize` 并 `Finish()`，不再启动协程。代价是相机缩放由平滑插值变为瞬时（通常 0.1 秒，视觉差异很小）。
 - **Q：任务完成时为什么 `MissionWidgetTask.Finish` 会报 `ArgumentNullException`？** 该方法的 `Task`/`Info`/`Widget` 可能为空（HUD 重建或对象已销毁），`Info.Tasks.ContainsKey(Task)` 收到 null 键就抛异常；它由 PlayMaker `CallMethod` 调用，异常会中断该动作。本仓在方法开头加了判空，任一为空直接返回。
+- **Q：可以直接编译 `tmp/decomp` 里的反编译源码吗？** 不建议。那份源码是从**出厂 DLL**（10 月 13 日）导出的，整体重编译会丢掉之后所有 IL 补丁（分辨率/按钮/装备店/战斗保护等）；而且本仓脚本都按当前 DLL 的偏移定位，重编译后偏移全部失效。小改动直接说明改了什么，用 IL 补丁移植更稳（本次 `SemanticVersion.IsPublic` 就是这样处理的）。
 - **Q：战斗里换装备的提示为什么是英文？** `CombatItemUsage.cs` 里写死了四条体力提示（换装备/用物品的“体力不足”与“注意体力”），语言文件够不到。本仓在 `--patch-dll` 时按相同字符数就地改写为中文（对话框尾部空格不可见）。
 - **Q：「皱巴巴的字条」正文为什么是乱码？** 英文原文就是不可读的占位乱码（`dfefg hlaehm …`），不是漏翻。本仓把正文改为「（字迹潦草，无法辨认）」，保留“读不懂”的设定。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
@@ -209,6 +212,7 @@ scripts/
   patch_vfx_guard.py             战斗特效保护（修 PMA_CombatVisualEffect 空引用，仅 --patch-dll）
   patch_combat_prompt_texts.py   换装备/用物品的体力提示汉化（仅 --patch-dll）
   patch_mission_widget_guard.py  任务 HUD 空引用保护（修 MissionWidgetTask.Finish 空键，仅 --patch-dll）
+  patch_semver_public.py         SemanticVersion.IsPublic 恒 false（解锁 public 限制内容，仅 --patch-dll）
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）

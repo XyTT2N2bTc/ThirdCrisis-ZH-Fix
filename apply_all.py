@@ -195,6 +195,13 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 手动修改移植：SemanticVersion.IsPublic 恒返回 false（解锁 public 限制内容）
+        print("IsPublic 恒 false:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_semver_public.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
 
