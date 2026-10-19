@@ -37,6 +37,7 @@ No translation for Journal project_mindcrush:entry_05
 | ESC 菜单的 `History` 显示成「选项」/ 对话 HUD 的 `History` 显示成「自动」 | ✅ 两对标签各自共用了同一个 UILocalization guid（原游戏缺陷）；给两处 History 换独立 guid 并补 `历史记录` |
 | 装备店购买确认框是英文（`Are you sure you want to purchase…?` / `Yes` / `No`），已拥有标记 `OWNED`、两条错误提示也是英文 | ✅ 需要 `--patch-dll`（文案写死在 `Assembly-CSharp.dll`，已就地等长改写） |
 | 「击败敌人」类任务的任务栏文本是 `Defeat Rat Grunt (0 / 5)` | ✅ PlayMaker FSM 拼出的 `Defeat ` 前缀已改为「击败 」（敌人名保留英文，与战斗界面一致） |
+| 战斗时游戏崩溃/卡死，日志里 `InvalidOperationException: Queue empty`（`CombatFaction.StartTurn`） | ✅ 需要 `--patch-dll`：给 `StartTurn` 加空阵营保护（空阵营直接跳过回合） |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -137,6 +138,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - History 共用 guid：暂停菜单组件 151279 → `b7c2e4a1-…`（Options 的 157749 保持 `042b7b07-…`）；对话 HUD 组件 157278 → `c4e1d9a2-…`（Auto 的 158411 保持 `f39bd612-…`）；语言包 `UILocalizations` 29291 → 29293，两条 `历史记录` 条目；资源两处共改 72 字节，文件大小不变。
 - 装备店文本（`--patch-dll`）：`Yes`/`No` 两条全局弹窗标签、`OWNED` 片段、两条错误提示、确认语两段槽位，共 7 条 #US 字符串 + 2 处 token；DLL 改动 105 字节，区间外 0；反编译复核为 `PopupData("确定要购买「" + text + "」？", …, "是  ", "否 ")`。
 - 击败敌人任务：`resources.assets` 里 FSM 的两处 `Defeat `（任务名/任务栏名各一处）等长改为「击败 」，各 7 字节；文件大小不变，UnityPy 复载 161,312 个对象正常；幂等重跑通过。
+- 战斗空阵营保护（`--patch-dll`）：`CombatFaction.StartTurn` 的新方法体 77 字节放在 `.text` 文件 `0x433B48`（RVA `0x435948`）；MethodDef RID 12029 的 RVA `0xE3714` → `0x435948`；`.text` VirtualSize `0x433948` → `0x433A00`。dnSpy 反编译复核为 `if (this.Characters.Count == 0) { this.DelayedStartTurn(); return; }`；游戏启动、加载全部程序集正常。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
 - 幂等：对已修补状态重跑，全部步骤报 0 改动。
 - **打包期自查**：第一版 DLL 补丁误把 NOP 写成 `0x90`（那是 x86 的 nop；IL 的 nop 是 `0x00`），反编译复核时发现该处被解成 11 条 `ldelem.i1`（栈会失衡），已改正为 `0x00` 并重新验证。
@@ -158,6 +160,7 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：为什么 ESC 菜单里的 `History` 之前显示成「选项」？** 原游戏里 `History` 和 `Options` 两个标签上的 `UILocalization` 组件用了**同一个 guid**（`042b7b07-…`），语言包给这个 guid 的译文是「选项」，所以两个按钮都显示「选项」。英文下 `SetTextToTranslation` 用的是各文本组件自己缓存的原文（`HISTORY` / `OPTIONS`），因此只有本地化后才暴露。对话 HUD 的 `History` / `Auto` 是同一类问题（共用 `f39bd612-…` →「自动」）。本仓把两处 History 的 guid 换成独立值（`b7c2e4a1-…` / `c4e1d9a2-…`），并在语言包里补了两条「历史记录」。
 - **Q：装备店购买弹窗为什么是英文？** 确认语 `Are you sure you want to purchase '…'?`、`Yes`/`No`、已拥有标记 `OWNED` 和两条错误提示都是 `PopulateItemShop.cs` 里写死的字面量，语言文件够不到。本仓在 `--patch-dll` 时等长改写 #US 字符串：确认语拆成两段（`确定要购买「` / `」？`，复用两条只被 `Debug.Log` 引用的槽位），`Yes`/`No` 改成「是」/「否」（全局弹窗标签，只作显示），`OWNED` → `已拥有`，两条错误提示译成中文。
 - **Q：为什么「击败敌人」任务显示 `Defeat Rat Grunt (0 / 5)`？** 这个任务的名称不是语言包给的，而是 PlayMaker FSM `Mission_Generic_DefeatEnemyAmount_Logic` 在运行时拼出来的：`"Defeat " + 敌人名 + " (当前 / 目标)"`，写进 `NewTask.OverrideDisplayName`，而它的优先级高于语言包译文。本仓把 FSM 里两处字符串常量 `Defeat ` 等字节数改成「击败 」（7 字节不变），任务栏显示为 `击败 Rat Grunt (0 / 5)`；敌人名 `Rat Grunt` 是角色数据里的 `Name`，与战斗界面共用，未改。
+- **Q：战斗时崩溃/卡死，日志里 `InvalidOperationException: Queue empty` 怎么办？** 这是原游戏 `CombatFaction.StartTurn()` 的缺陷：空阵营（`Characters.Count == 0`）时仍执行 `Dequeue()`。空阵营会出现在回合管理器检查完 `HasParticipants` 之后、真正开回合之前（`PreTurnStart` 的约束里最后一个角色被移除）。本仓在 `--patch-dll` 时给 `StartTurn` 加了保护：空阵营直接调用 `DelayedStartTurn()`（1 秒后清约束、正常跳过该阵营）。新方法体放在 `.text` 末尾的零填充区，MethodDef 的 RVA 指向它、`.text` 的 VirtualSize 扩到覆盖；其他方法/元数据不动。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
 - **Q：为什么物品提示里还有英文 `Slots: Shirt, Pants`、`(Intact)`？** 这两处是**代码里写死的**，语言文件够不到：`Asuna/Items/Item.cs` 的 `GetTooltipString()` 里 `"Slots: "` 是硬编码英文字面量（约第 231 行），槽位名来自 `EquipmentSlot.ToString()`（枚举名）；耐久等级用 `Enum.GetName(typeof(DurabilityLevel), …)`（约第 297 行）拼出来。要翻译它们得改 DLL 代码（不是简单的等长替换），不属于本仓当前范围。
 - **Q：为什么物品操作按钮在中文下全显示「使用」？** 这三个按钮的标签是**运行时数据**：`PopulateInventoryItem.PopulateFunctions()` 依次加入 `AddFunction("Cancel")`、`AddFunction(Item.UseText)` 和各物品自定义动作的 `DisplayName`（都在代码/资源里，英文，且不经过翻译表）。中文下它们被按钮预制体上的翻译组件按固定 guid 覆盖成同一个词（例：`Use`→使用），所以三个都一样。修这个同样要改代码/资源并关闭该组件的覆盖，属另一档改动。
@@ -181,6 +184,7 @@ scripts/
   fix_pause_history.py           修 ESC 菜单 History 与 Options 共用 guid 导致显示「选项」
   patch_shop_texts.py            装备店购买确认语/Yes-No/OWNED/错误提示（仅 --patch-dll 时运行）
   patch_defeat_task_zh.py        击败敌人任务的 FSM 前缀 "Defeat " → 「击败 」
+  patch_combat_turn_guard.py     战斗回合空阵营保护（修 Queue empty 崩溃，仅 --patch-dll）
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）

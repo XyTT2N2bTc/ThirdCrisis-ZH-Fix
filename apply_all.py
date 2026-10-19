@@ -146,6 +146,13 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 战斗回合空阵营保护：修 "InvalidOperationException: Queue empty"
+        print("战斗回合空阵营保护:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_combat_turn_guard.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
 
