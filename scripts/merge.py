@@ -106,8 +106,10 @@ if "--write" in sys.argv:
         n2 = fix_journal_entries.ensure(SRC, apply=True, quiet=True)
         n3 = fix_version_strings.ensure(SRC, apply=True, quiet=True)
         n4 = prune_stale_ui_guids.ensure(SRC, apply=True, quiet=True)
-        print("已写入(原文件备份于 .bak): 补设置项 %d 条, 补/改日志条目 %d 条, 改版本号 %d 条, 清过期 UI %d 条"
-              % (n1, n2, n3, n4))
+        import fix_item_translations
+        n5 = fix_item_translations.ensure(SRC, apply=True, quiet=True)
+        print("已写入(原文件备份于 .bak): 补设置项 %d 条, 补/改日志条目 %d 条, 改版本号 %d 条, 清过期 UI %d 条, 物品条目 %d 条"
+              % (n1, n2, n3, n4, n5))
 
 print("唯一原文 %d, 已翻译 %d, 落点应用 %d, 校验错误 %d, 未命中落点 %d" %
       (len(T), len(T), applied, len(errors), len(missing)))

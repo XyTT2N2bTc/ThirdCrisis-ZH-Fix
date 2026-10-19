@@ -69,7 +69,10 @@ def main():
     n3 = fix_version_strings.ensure(lang, apply=a.apply)
     n4 = prune_stale_ui_guids.ensure(lang, scan_root=os.path.join(a.game, "ThirdCrisis_Data"),
                                      apply=a.apply)
-    print("语言包: 设置项 %d 条, 日志 %d 条, 版本号 %d 条, 过期 UI %d 条" % (n1, n2, n3, n4))
+    import fix_item_translations
+    n5 = fix_item_translations.ensure(lang, apply=a.apply)
+    print("语言包: 设置项 %d 条, 日志 %d 条, 版本号 %d 条, 过期 UI %d 条, 物品条目 %d 条"
+          % (n1, n2, n3, n4, n5))
 
     if a.skip_assets:
         print("(--skip-assets: 未处理 resources.assets)")
@@ -128,6 +131,15 @@ def main():
     if a.apply:
         cmd.append("--apply")
     ok = _sp2.call(cmd) == 0 and ok
+
+    # ---- 3g. 物品 TranslationGuid 冲突（多个物品共用一个 Id → 名字串台）----
+    import subprocess as _sp3
+    print("\n物品 GUID 冲突:", assets)
+    cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_item_guids.py"), "--asset", assets,
+           "--map", os.path.join(HERE, "translation", "item_guid_map.json")]
+    if a.apply:
+        cmd.append("--apply")
+    ok = _sp3.call(cmd) == 0 and ok
 
     # ---- 4. 可选：修"改了分辨率重启后失效"（改 Assembly-CSharp.dll，11 字节改 NOP）----
     if a.patch_dll:
