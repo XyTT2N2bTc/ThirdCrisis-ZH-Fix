@@ -39,6 +39,9 @@ No translation for Journal project_mindcrush:entry_05
 | 「击败敌人」类任务的任务栏文本是 `Defeat Rat Grunt (0 / 5)` | ✅ PlayMaker FSM 拼出的 `Defeat ` 前缀已改为「击败 」（敌人名保留英文，与战斗界面一致） |
 | 战斗时游戏崩溃/卡死，日志里 `InvalidOperationException: Queue empty`（`CombatFaction.StartTurn`） | ✅ 需要 `--patch-dll`：给 `StartTurn` 加空阵营保护（空阵营直接跳过回合） |
 | 杀掉敌人后敌方画像不消失、回合结束不了，日志里 `PMA_SetCameraOrthSize.LerpOrtho` 的 `NullReferenceException` | ✅ 需要 `--patch-dll`：相机为空时直接结束该 PlayMaker 动作，不再中断 FSM 协程 |
+| 战斗偶发同样卡死，日志里是 `PMA_CameraTransitionBetweenPositions` / `PMA_CombatVisualEffect` 的 `NullReferenceException` | ✅ 需要 `--patch-dll`：两处加空对象保护（为空则结束动作并补发完成事件） |
+| 战斗里切换装备/使用物品的体力提示是英文 | ✅ 需要 `--patch-dll`：四条对话框提示已汉化 |
+| 任务/资料里「皱巴巴的字条」正文是看不懂的乱码 | ✅ 改为「（字迹潦草，无法辨认）」（原文即不可读占位） |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
 | 想要整份中文全部重译（不只是上述几处） | ⚠️ 需要 `--retranslate`（见下），会整体替换语言文件 |
 
@@ -135,12 +138,15 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 资产（成就）：33/33 条复解析读回中文；按文件自身长度前缀读取并 UTF-8 解码 = 目标中文 66/66；长度前缀 = 对齐后大小 66/66；改动字节 1681 个，全部落在 66 个字符串槽内（槽外 0）。
 - 资产（字体）：`TMP Settings.m_fallbackFontAssets` = `[Arial SDF, NotoSerifSC-Regular SDF]`；15 个字体资产回退表含中文字体；`NotoSerifSC-Regular SDF.m_IsMultiAtlasTexturesEnabled` = 1（其图集原只有 736 字形，而中文译文用到 2568 种非 ASCII 字符）。对象摘要比对：改前 161,312 / 改后 161,312，**非预期变化 0**。
 - 资产（场景画廊）：`Gallery` 对象 532 条字符串（38 分类 + 247 条目名 + 247 解锁提示）复解析读回中文 532/532；字符串起始偏移全部未变；长度前缀 = 原分配长度 − 4；两处字体 PPtr 已指向 `NotoSerifSC-Regular`（pathID 10547）；改动字节全部落在字符串分配区或字体 PPtr 内（区外 0），文件大小不变。
-- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `c0b64afb90bee7ff…`、`resources.assets` `cff728eb6a7c57c6…`）。
+- **端到端复现**：把语言文件与资产还原成随包原始状态后运行 `apply_all.py --apply --retranslate`，产出与交付状态 **sha256 完全一致**（语言文件 `454592c52dc16d5c…`、`resources.assets` `cff728eb6a7c57c6…`）。
 - History 共用 guid：暂停菜单组件 151279 → `b7c2e4a1-…`（Options 的 157749 保持 `042b7b07-…`）；对话 HUD 组件 157278 → `c4e1d9a2-…`（Auto 的 158411 保持 `f39bd612-…`）；语言包 `UILocalizations` 29291 → 29293，两条 `历史记录` 条目；资源两处共改 72 字节，文件大小不变。
 - 装备店文本（`--patch-dll`）：`Yes`/`No` 两条全局弹窗标签、`OWNED` 片段、两条错误提示、确认语两段槽位，共 7 条 #US 字符串 + 2 处 token；DLL 改动 105 字节，区间外 0；反编译复核为 `PopupData("确定要购买「" + text + "」？", …, "是  ", "否 ")`。
 - 击败敌人任务：`resources.assets` 里 FSM 的两处 `Defeat `（任务名/任务栏名各一处）等长改为「击败 」，各 7 字节；文件大小不变，UnityPy 复载 161,312 个对象正常；幂等重跑通过。
 - 战斗空阵营保护（`--patch-dll`）：`CombatFaction.StartTurn` 的新方法体 77 字节放在 `.text` 文件 `0x433B48`（RVA `0x435948`）；MethodDef RID 12029 的 RVA `0xE3714` → `0x435948`；`.text` VirtualSize `0x433948` → `0x433A00`。dnSpy 反编译复核为 `if (this.Characters.Count == 0) { this.DelayedStartTurn(); return; }`；游戏启动、加载全部程序集正常。
 - 相机为空保护（`--patch-dll`）：`PMA_SetCameraOrthSize.OnEnter` 新方法体 266 字节放在 `.reloc` 文件 `0x434020`（RVA `0x438020`）；MethodDef RID 13569 的 RVA `0x101680` → `0x438020`；`.reloc` VirtualSize `0xC` → `0x200`。dnSpy 反编译复核为 `if (!this.cachedCam) { base.Fsm.ProcessEvent(this.OnFinished, null); base.Finish(); return; }`；游戏启动、加载全部程序集正常。
+- 战斗余留 NRE（`--patch-dll`）：`PMA_CameraTransitionBetweenPositions.OnEnter` 新方法体 139 字节放在 `.reloc` 文件 `0x43412C`（RVA `0x43812C`），MethodDef RID 335 的 RVA `0x6450` → `0x43812C`；`PMA_CombatVisualEffect.OnEnter` 新方法体 142 字节放在 `0x4341B8`（RVA `0x4381B8`），MethodDef RID 12391 的 RVA `0xE99C4` → `0x4381B8`；`.reloc` RawSize/VirtualSize `0x200` → `0x400`（文件 +0x200）。dnSpy 复核两处判空正确。
+- 战斗提示文本（`--patch-dll`）：4 条 #US 字符串等长改写，DLL 改动 278 字节，区间外 0。
+- 日志占位纸条：`fiend_notes:crumpled_note` 的 `TranslatedContents` →「（字迹潦草，无法辨认）」；其余日志条目不变。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
 - 幂等：对已修补状态重跑，全部步骤报 0 改动。
 - **打包期自查**：第一版 DLL 补丁误把 NOP 写成 `0x90`（那是 x86 的 nop；IL 的 nop 是 `0x00`），反编译复核时发现该处被解成 11 条 `ldelem.i1`（栈会失衡），已改正为 `0x00` 并重新验证。
@@ -164,6 +170,9 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：为什么「击败敌人」任务显示 `Defeat Rat Grunt (0 / 5)`？** 这个任务的名称不是语言包给的，而是 PlayMaker FSM `Mission_Generic_DefeatEnemyAmount_Logic` 在运行时拼出来的：`"Defeat " + 敌人名 + " (当前 / 目标)"`，写进 `NewTask.OverrideDisplayName`，而它的优先级高于语言包译文。本仓把 FSM 里两处字符串常量 `Defeat ` 等字节数改成「击败 」（7 字节不变），任务栏显示为 `击败 Rat Grunt (0 / 5)`；敌人名 `Rat Grunt` 是角色数据里的 `Name`，与战斗界面共用，未改。
 - **Q：战斗时崩溃/卡死，日志里 `InvalidOperationException: Queue empty` 怎么办？** 这是原游戏 `CombatFaction.StartTurn()` 的缺陷：空阵营（`Characters.Count == 0`）时仍执行 `Dequeue()`。空阵营会出现在回合管理器检查完 `HasParticipants` 之后、真正开回合之前（`PreTurnStart` 的约束里最后一个角色被移除）。本仓在 `--patch-dll` 时给 `StartTurn` 加了保护：空阵营直接调用 `DelayedStartTurn()`（1 秒后清约束、正常跳过该阵营）。新方法体放在 `.text` 末尾的零填充区，MethodDef 的 RVA 指向它、`.text` 的 VirtualSize 扩到覆盖；其他方法/元数据不动。
 - **Q：杀掉敌人后画像不消失、回合结束不了怎么办？** 日志里通常是 `PMA_SetCameraOrthSize.LerpOrtho` 的 `NullReferenceException`：该 PlayMaker 动作在相机不可用（`Camera.main` 为 null，或相机已销毁）时仍去设置 `orthographicSize`，协程抛异常后 `OnFinished` 事件永远不会发出，使用它的 FSM（战斗/摄像机流程）就卡住，表现为敌人回合不结束、画像不消失。本仓在 `--patch-dll` 时给该动作加了保护：相机不可用时直接 `ProcessEvent(OnFinished)` + `Finish()`，让 FSM 正常继续。新方法体放在 `.reloc` 段尾部零区，MethodDef 的 RVA 指向它、`.reloc` 的 VirtualSize 扩到 `0x200`。
+- **Q：修了相机保护后为什么还会偶发卡死？** 同一类“对象已销毁、协程/FSM 仍在取值”的问题还有两处：`PMA_CameraTransitionBetweenPositions.OnEnter`（PositionA/B 为空或已销毁）和 `PMA_CombatVisualEffect.doAnimation`（Origin/TargetCharacter 为空或已销毁）。两者都会抛 NRE 并让使用它们的 FSM 卡住。本仓分别加了判空：前者为空直接 `Finish()`；后者在 `OnEnter` 检查选中的 `CharacterHandler`，不可用则补发 `VisualEffectDone` 并 `Finish()`，不再启动协程。
+- **Q：战斗里换装备的提示为什么是英文？** `CombatItemUsage.cs` 里写死了四条体力提示（换装备/用物品的“体力不足”与“注意体力”），语言文件够不到。本仓在 `--patch-dll` 时按相同字符数就地改写为中文（对话框尾部空格不可见）。
+- **Q：「皱巴巴的字条」正文为什么是乱码？** 英文原文就是不可读的占位乱码（`dfefg hlaehm …`），不是漏翻。本仓把正文改为「（字迹潦草，无法辨认）」，保留“读不懂”的设定。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
 - **Q：为什么物品提示里还有英文 `Slots: Shirt, Pants`、`(Intact)`？** 这两处是**代码里写死的**，语言文件够不到：`Asuna/Items/Item.cs` 的 `GetTooltipString()` 里 `"Slots: "` 是硬编码英文字面量（约第 231 行），槽位名来自 `EquipmentSlot.ToString()`（枚举名）；耐久等级用 `Enum.GetName(typeof(DurabilityLevel), …)`（约第 297 行）拼出来。要翻译它们得改 DLL 代码（不是简单的等长替换），不属于本仓当前范围。
 - **Q：为什么物品操作按钮在中文下全显示「使用」？** 这三个按钮的标签是**运行时数据**：`PopulateInventoryItem.PopulateFunctions()` 依次加入 `AddFunction("Cancel")`、`AddFunction(Item.UseText)` 和各物品自定义动作的 `DisplayName`（都在代码/资源里，英文，且不经过翻译表）。中文下它们被按钮预制体上的翻译组件按固定 guid 覆盖成同一个词（例：`Use`→使用），所以三个都一样。修这个同样要改代码/资源并关闭该组件的覆盖，属另一档改动。
@@ -189,6 +198,9 @@ scripts/
   patch_defeat_task_zh.py        击败敌人任务的 FSM 前缀 "Defeat " → 「击败 」
   patch_combat_turn_guard.py     战斗回合空阵营保护（修 Queue empty 崩溃，仅 --patch-dll）
   patch_camera_ortho_guard.py    相机为空保护（修 PMA_SetCameraOrthSize NRE 卡住 FSM，仅 --patch-dll）
+  patch_camera_transition_guard.py 相机转场保护（修 PMA_CameraTransitionBetweenPositions NRE，仅 --patch-dll）
+  patch_vfx_guard.py             战斗特效保护（修 PMA_CombatVisualEffect 空引用，仅 --patch-dll）
+  patch_combat_prompt_texts.py   换装备/用物品的体力提示汉化（仅 --patch-dll）
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）

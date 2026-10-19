@@ -44,6 +44,11 @@ ID_FIXES = {
          "Log 4 - Discontinuation of the Project"),
 }
 
+# 已有条目的正文修正（原文是不可读的占位乱码时，给出可读的中文提示）
+CONTENT_FIXES = {
+    "fiend_notes:crumpled_note": "（字迹潦草，无法辨认）",
+}
+
 # (Id, Name, Contents 英文原文, TranslatedName, TranslatedContents)
 NEW = [
  ("audiologs:audiolog_1", "Audiolog 1",
@@ -152,6 +157,13 @@ def ensure(path=SRC, apply=False, quiet=False):
         e["Name"] = nm
         n_id += 1
         if not quiet: print("   改 Id: %s → %s" % (old, new))
+    n_fix = 0
+    for ident, txt in CONTENT_FIXES.items():
+        e = by_id.get(ident)
+        if e and e.get("TranslatedContents") != txt:
+            e["TranslatedContents"] = txt
+            n_fix += 1
+            if not quiet: print("   正文修正: %s → %r" % (ident, txt))
     have = {x.get("Id") for x in je}
     for ident, nm, contents, tname, tcontents in NEW:
         if ident in have:
@@ -161,13 +173,14 @@ def ensure(path=SRC, apply=False, quiet=False):
         n_new += 1
         if not quiet: print("   新增: %-58s %s / %s" % (ident, tname, tcontents[:18]))
     if not quiet:
-        print("日志条目: 现有 %d 条, 改 Id %d 条, 新增 %d 条" % (len(je), n_id, n_new))
-    if (n_id or n_new) and apply:
+        print("日志条目: 现有 %d 条, 改 Id %d 条, 新增 %d 条, 正文修正 %d 条"
+              % (len(je), n_id, n_new, n_fix))
+    if (n_id or n_new or n_fix) and apply:
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             json.dump(d, f, ensure_ascii=False, separators=(",", ":"))
         if not quiet:
             print("已写入 %s（JournalEntries %d 条）" % (os.path.basename(path), len(je)))
-    return n_id + n_new
+    return n_id + n_new + n_fix
 
 
 if __name__ == "__main__":

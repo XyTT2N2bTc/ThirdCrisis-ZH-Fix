@@ -101,7 +101,7 @@ def main():
 
     if cur_rva == NEW_RVA:
         body_ok = bytes(d[CAVE_FILE:CAVE_FILE + len(new_body)]) == new_body
-        vsz_ok = struct.unpack_from("<I", d, reloc_hdr + 8)[0] == NEW_VIRTSIZE
+        vsz_ok = struct.unpack_from("<I", d, reloc_hdr + 8)[0] >= NEW_VIRTSIZE
         if body_ok and vsz_ok:
             print("已是补丁后的状态，无需改动。")
             return 0

@@ -160,6 +160,27 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 相机转场保护：修 PMA_CameraTransitionBetweenPositions 的 NRE
+        print("相机转场保护:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_camera_transition_guard.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
+        # 特效保护：修 PMA_CombatVisualEffect 空引用导致 VisualEffectDone 不发
+        print("战斗特效保护:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_vfx_guard.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
+        # 战斗提示文本：换装备/使用物品的体力提示
+        print("战斗提示文本:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_combat_prompt_texts.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
 
