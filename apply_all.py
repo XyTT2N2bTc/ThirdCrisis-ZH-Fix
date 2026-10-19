@@ -153,6 +153,13 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 相机为空保护：修 PMA_SetCameraOrthSize 的 NRE 导致 FSM 卡死（敌人回合结束不了）
+        print("相机为空保护:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_camera_ortho_guard.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
     print("\n%s" % ("全部完成。" if ok else "存在失败项，请查看上面的输出。"))
     return 0 if ok else 1
 
