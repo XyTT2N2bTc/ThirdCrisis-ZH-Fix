@@ -96,3 +96,31 @@ UTF-16 字符数改写：
 
 - dnSpyEx `dnSpy.Console.exe`：IL/反编译定位与复核。
 - 纯 Python：PE 段头与 `#~` MethodDef 表解析、方法体复制与改写、RVA/RawSize/VirtualSize。
+
+## 追加（同日）：仍偶发卡死后的第三轮
+
+最新日志里还剩两类异常：
+
+1. `PMA_SetCameraOrthSize.LerpOrtho` **再次** NRE——相机保护只覆盖了 OnEnter，
+   相机可能是在 `LerpOrtho` 协程运行期间才被销毁。
+   修法：把 `OnEnter` 里 `ShouldSnap.Value` 之后的 `brfalse.s`（跳过快照路径）
+   改成 `pop; nop`（文件 `0x4340EB`），**恒走快照路径**——立即设置
+   `orthographicSize` 并 `Finish()`，不再启动协程。代价是相机缩放由 0.1 秒插值
+   变为瞬时，视觉差异很小。脚本：`patch_camera_ortho_snap.py`；
+   `patch_camera_ortho_guard.py` 构建新体时已直接写入这一改动。
+2. `MissionWidgetTask.Finish()` 抛 `ArgumentNullException: Value cannot be null.
+   Parameter name: key`——`Task`/`Info`/`Widget` 为空时仍执行
+   `Info.Tasks.ContainsKey(Task)`；该调用来自 PlayMaker `CallMethod`，
+   异常会中断该动作/FSM。
+   修法：方法开头加判空，任一为空直接返回。新方法体 143 字节放在 `.reloc`
+   文件 `0x434248`（RVA `0x438248`），MethodDef RID 9969 的 RVA
+   `0xBB02C` → `0x438248`。脚本：`patch_mission_widget_guard.py`。
+
+验证：两处 dnSpy 反编译均符合预期（快照路径恒执行 / Finish 带判空）；
+游戏启动 `Loaded All Assemblies` 正常；`apply_all.py --apply --patch-dll` 全部完成、幂等。
+`.reloc` 段当前使用到 `0x4342D7`，仍在 `0x434400` 的 RawData 范围内。
+
+未处理项：`MissionWidget.Populate` 在 Mission 已销毁时仍会在
+`LanguageManager.GetMissionTranslation` 里 NRE（来自 UI 事件回调，不会中断战斗
+回合）；如后续仍出现，可按同样方式在 Populate 开头加判空（需同时平移其
+try/finally 的异常处理偏移）。

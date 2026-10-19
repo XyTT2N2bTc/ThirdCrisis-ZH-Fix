@@ -40,6 +40,8 @@ No translation for Journal project_mindcrush:entry_05
 | 战斗时游戏崩溃/卡死，日志里 `InvalidOperationException: Queue empty`（`CombatFaction.StartTurn`） | ✅ 需要 `--patch-dll`：给 `StartTurn` 加空阵营保护（空阵营直接跳过回合） |
 | 杀掉敌人后敌方画像不消失、回合结束不了，日志里 `PMA_SetCameraOrthSize.LerpOrtho` 的 `NullReferenceException` | ✅ 需要 `--patch-dll`：相机为空时直接结束该 PlayMaker 动作，不再中断 FSM 协程 |
 | 战斗偶发同样卡死，日志里是 `PMA_CameraTransitionBetweenPositions` / `PMA_CombatVisualEffect` 的 `NullReferenceException` | ✅ 需要 `--patch-dll`：两处加空对象保护（为空则结束动作并补发完成事件） |
+| 相机保护后 `PMA_SetCameraOrthSize.LerpOrtho` 仍偶发 NRE（相机在协程运行期间被销毁） | ✅ 需要 `--patch-dll`：该动作改为立即设置尺寸（不再起协程），彻底消除这条路径 |
+| 任务完成时日志里 `MissionWidgetTask.Finish` 抛 `ArgumentNullException`（字典空键），由 PlayMaker 调用 | ✅ 需要 `--patch-dll`：Task/Info/Widget 为空时直接返回 |
 | 战斗里切换装备/使用物品的体力提示是英文 | ✅ 需要 `--patch-dll`：四条对话框提示已汉化 |
 | 任务/资料里「皱巴巴的字条」正文是看不懂的乱码 | ✅ 改为「（字迹潦草，无法辨认）」（原文即不可读占位） |
 | Steam 校验后中文包被还原成英文机翻 | ✅ 重跑本仓脚本即可恢复（脚本幂等） |
@@ -145,6 +147,8 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - 战斗空阵营保护（`--patch-dll`）：`CombatFaction.StartTurn` 的新方法体 77 字节放在 `.text` 文件 `0x433B48`（RVA `0x435948`）；MethodDef RID 12029 的 RVA `0xE3714` → `0x435948`；`.text` VirtualSize `0x433948` → `0x433A00`。dnSpy 反编译复核为 `if (this.Characters.Count == 0) { this.DelayedStartTurn(); return; }`；游戏启动、加载全部程序集正常。
 - 相机为空保护（`--patch-dll`）：`PMA_SetCameraOrthSize.OnEnter` 新方法体 266 字节放在 `.reloc` 文件 `0x434020`（RVA `0x438020`）；MethodDef RID 13569 的 RVA `0x101680` → `0x438020`；`.reloc` VirtualSize `0xC` → `0x200`。dnSpy 反编译复核为 `if (!this.cachedCam) { base.Fsm.ProcessEvent(this.OnFinished, null); base.Finish(); return; }`；游戏启动、加载全部程序集正常。
 - 战斗余留 NRE（`--patch-dll`）：`PMA_CameraTransitionBetweenPositions.OnEnter` 新方法体 139 字节放在 `.reloc` 文件 `0x43412C`（RVA `0x43812C`），MethodDef RID 335 的 RVA `0x6450` → `0x43812C`；`PMA_CombatVisualEffect.OnEnter` 新方法体 142 字节放在 `0x4341B8`（RVA `0x4381B8`），MethodDef RID 12391 的 RVA `0xE99C4` → `0x4381B8`；`.reloc` RawSize/VirtualSize `0x200` → `0x400`（文件 +0x200）。dnSpy 复核两处判空正确。
+- 相机缩放快照化（`--patch-dll`）：`PMA_SetCameraOrthSize.OnEnter` 新方法体内 `ShouldSnap.Value` 后的 `brfalse.s` 改为 `pop; nop`（文件 `0x4340EB`），恒走快照路径；dnSpy 反编译确认不再调用 `StartCoroutine(LerpOrtho)`。
+- 任务 HUD 保护（`--patch-dll`）：`MissionWidgetTask.Finish` 新方法体 143 字节放在 `.reloc` 文件 `0x434248`（RVA `0x438248`），MethodDef RID 9969 的 RVA `0xBB02C` → `0x438248`；dnSpy 反编译为 `if (this.Task && this.Info != null && this.Widget && this.Widget.ShouldDequeue)`。
 - 战斗提示文本（`--patch-dll`）：4 条 #US 字符串等长改写，DLL 改动 278 字节，区间外 0。
 - 日志占位纸条：`fiend_notes:crumpled_note` 的 `TranslatedContents` →「（字迹潦草，无法辨认）」；其余日志条目不变。
 - **DLL 补丁（分辨率）**：定位到的 11 字节序列全 DLL 唯一（出现 1 次）；仅就这一步而言，改后与出厂 DLL 的差异恰为 `0x10D53D..0x10D547`（若同时应用按钮标签补丁，另有两处 `Equip`/`Remove` 字面量与一处 `Cancel` 显示 token 的等长差异）；整程序集反编译 3242 个 `.cs` 与改前逐文件比对，唯一差异是 `GraphicsOptions.cs` 里 `resOption.SetInt(num);` 一行消失；脚本对已打过补丁的文件报"已经是补丁后的状态，无需改动"。
@@ -171,6 +175,8 @@ OnResSet();                 // 于是 Screen.SetResolution(cachedResolutions[num
 - **Q：战斗时崩溃/卡死，日志里 `InvalidOperationException: Queue empty` 怎么办？** 这是原游戏 `CombatFaction.StartTurn()` 的缺陷：空阵营（`Characters.Count == 0`）时仍执行 `Dequeue()`。空阵营会出现在回合管理器检查完 `HasParticipants` 之后、真正开回合之前（`PreTurnStart` 的约束里最后一个角色被移除）。本仓在 `--patch-dll` 时给 `StartTurn` 加了保护：空阵营直接调用 `DelayedStartTurn()`（1 秒后清约束、正常跳过该阵营）。新方法体放在 `.text` 末尾的零填充区，MethodDef 的 RVA 指向它、`.text` 的 VirtualSize 扩到覆盖；其他方法/元数据不动。
 - **Q：杀掉敌人后画像不消失、回合结束不了怎么办？** 日志里通常是 `PMA_SetCameraOrthSize.LerpOrtho` 的 `NullReferenceException`：该 PlayMaker 动作在相机不可用（`Camera.main` 为 null，或相机已销毁）时仍去设置 `orthographicSize`，协程抛异常后 `OnFinished` 事件永远不会发出，使用它的 FSM（战斗/摄像机流程）就卡住，表现为敌人回合不结束、画像不消失。本仓在 `--patch-dll` 时给该动作加了保护：相机不可用时直接 `ProcessEvent(OnFinished)` + `Finish()`，让 FSM 正常继续。新方法体放在 `.reloc` 段尾部零区，MethodDef 的 RVA 指向它、`.reloc` 的 VirtualSize 扩到 `0x200`。
 - **Q：修了相机保护后为什么还会偶发卡死？** 同一类“对象已销毁、协程/FSM 仍在取值”的问题还有两处：`PMA_CameraTransitionBetweenPositions.OnEnter`（PositionA/B 为空或已销毁）和 `PMA_CombatVisualEffect.doAnimation`（Origin/TargetCharacter 为空或已销毁）。两者都会抛 NRE 并让使用它们的 FSM 卡住。本仓分别加了判空：前者为空直接 `Finish()`；后者在 `OnEnter` 检查选中的 `CharacterHandler`，不可用则补发 `VisualEffectDone` 并 `Finish()`，不再启动协程。
+- **Q：相机保护都加了，为什么 `PMA_SetCameraOrthSize.LerpOrtho` 还会偶发 NRE？** 因为相机可能是在 `LerpOrtho` **协程运行期间**才被销毁的，`OnEnter` 的判空挡不住。本仓把该动作的 `ShouldSnap` 分支改为恒走快照路径：立即设置 `orthographicSize` 并 `Finish()`，不再启动协程。代价是相机缩放由平滑插值变为瞬时（通常 0.1 秒，视觉差异很小）。
+- **Q：任务完成时为什么 `MissionWidgetTask.Finish` 会报 `ArgumentNullException`？** 该方法的 `Task`/`Info`/`Widget` 可能为空（HUD 重建或对象已销毁），`Info.Tasks.ContainsKey(Task)` 收到 null 键就抛异常；它由 PlayMaker `CallMethod` 调用，异常会中断该动作。本仓在方法开头加了判空，任一为空直接返回。
 - **Q：战斗里换装备的提示为什么是英文？** `CombatItemUsage.cs` 里写死了四条体力提示（换装备/用物品的“体力不足”与“注意体力”），语言文件够不到。本仓在 `--patch-dll` 时按相同字符数就地改写为中文（对话框尾部空格不可见）。
 - **Q：「皱巴巴的字条」正文为什么是乱码？** 英文原文就是不可读的占位乱码（`dfefg hlaehm …`），不是漏翻。本仓把正文改为「（字迹潦草，无法辨认）」，保留“读不懂”的设定。
 - **Q：为什么 NPC 的名字还显示 `Man`？** 名字来自对话行的 `Speaker` 字段（`DialoguePopulateInfo.GetSpeakerName` 直接返回它或 `character.Name`），是**数据里的标识**，语言文件没有对应通道；而重命名会波及按名字查角色的调用（`GetByDisplayName` 等），风险高，故本仓未动。
@@ -198,9 +204,11 @@ scripts/
   patch_defeat_task_zh.py        击败敌人任务的 FSM 前缀 "Defeat " → 「击败 」
   patch_combat_turn_guard.py     战斗回合空阵营保护（修 Queue empty 崩溃，仅 --patch-dll）
   patch_camera_ortho_guard.py    相机为空保护（修 PMA_SetCameraOrthSize NRE 卡住 FSM，仅 --patch-dll）
+  patch_camera_ortho_snap.py     相机缩放缓动改快照（修 LerpOrtho 协程 NRE，仅 --patch-dll）
   patch_camera_transition_guard.py 相机转场保护（修 PMA_CameraTransitionBetweenPositions NRE，仅 --patch-dll）
   patch_vfx_guard.py             战斗特效保护（修 PMA_CombatVisualEffect 空引用，仅 --patch-dll）
   patch_combat_prompt_texts.py   换装备/用物品的体力提示汉化（仅 --patch-dll）
+  patch_mission_widget_guard.py  任务 HUD 空引用保护（修 MissionWidgetTask.Finish 空键，仅 --patch-dll）
   merge.py                       用 translation/done 语料回填语言文件（管线）
 translation/
   done/                   译文语料（按原文配对，23705 条）

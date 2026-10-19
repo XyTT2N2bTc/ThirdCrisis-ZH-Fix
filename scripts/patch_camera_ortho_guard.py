@@ -86,6 +86,9 @@ def main():
     code = bytes(d[OLD_FILE + 12:OLD_FILE + 12 + codesize])
     assert code[INSERT_AT - 5:INSERT_AT] == bytes.fromhex("7D66370004"), code[INSERT_AT - 5:INSERT_AT].hex()
     new_code = code[:INSERT_AT] + GUARD + code[INSERT_AT:]
+    # 同时把 ShouldSnap 分支改为恒走快照路径（pop; nop），不再启动 LerpOrtho 协程
+    assert new_code[0xBF:0xC1] == bytes.fromhex("2C2F"), new_code[0xBF:0xC1].hex()
+    new_code = new_code[:0xBF] + bytes.fromhex("2600") + new_code[0xC1:]
     new_body = struct.pack("<HHII", flags, maxstack, len(new_code), 0) + new_code
     print("新方法体 %d 字节（原 %d + 保护 %d）@file 0x%X (RVA 0x%X)"
           % (len(new_body), len(hdr) + codesize, len(GUARD), CAVE_FILE, NEW_RVA))

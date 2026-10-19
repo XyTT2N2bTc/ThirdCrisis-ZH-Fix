@@ -160,6 +160,13 @@ def main():
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
 
+        # 相机缩放缓动改为快照：避免相机在协程期间被销毁 → LerpOrtho NRE
+        print("相机缩放快照化:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_camera_ortho_snap.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
         # 相机转场保护：修 PMA_CameraTransitionBetweenPositions 的 NRE
         print("相机转场保护:", dll)
         cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_camera_transition_guard.py"), "--dll", dll]
@@ -170,6 +177,13 @@ def main():
         # 特效保护：修 PMA_CombatVisualEffect 空引用导致 VisualEffectDone 不发
         print("战斗特效保护:", dll)
         cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_vfx_guard.py"), "--dll", dll]
+        if a.apply:
+            cmd.append("--apply")
+        ok = subprocess.call(cmd) == 0 and ok
+
+        # 任务 HUD 空引用保护：MissionWidgetTask.Finish 的字典空键
+        print("任务 HUD 保护:", dll)
+        cmd = [sys.executable, os.path.join(HERE, "scripts", "patch_mission_widget_guard.py"), "--dll", dll]
         if a.apply:
             cmd.append("--apply")
         ok = subprocess.call(cmd) == 0 and ok
